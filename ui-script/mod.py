@@ -19,6 +19,7 @@ def show(data,cmd_):
         options=[('embeddings目录(PT)', 1), ('hypernetworks目录(PT)', 2), ('大模型目录(CKPT)', 3), ('数据盘(autodl-tmp)', 4)],
         value=4,
         description='你需要安装到的位置:',
+        style={'description_width': 'initial'},
         disabled=False,
     )
     
