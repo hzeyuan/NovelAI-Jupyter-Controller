@@ -16,7 +16,7 @@ def show(data,cmd_run):
         )
     
     position_set_tip = widgets.HTML(
-        value="<font size='2' color='red'>推荐在训练的时候选择数据盘，更节约空间，每次运行请勿频繁切换，以免出现未发现的问题!</font>",
+        value="<font size='2' color='red'>推荐在训练的时候选择数据盘，更节约空间。请勿频繁切换，切换至数据盘后尽量别再切换为系统盘，以免空间不足造成移动时失败!</font>",
     )
 
     info = widgets.Label('请选择需要开启的参数:')
@@ -101,7 +101,7 @@ def show(data,cmd_run):
     #绑定加速函数
     run_buttom.on_click(run_click)
     
-    display(position_set,position_set_tip,info,deepdanbooru,left_box,run_buttom)
+    display(position_set_tip,position_set,info,deepdanbooru,left_box,run_buttom)
     
     return out
         
