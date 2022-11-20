@@ -2,6 +2,7 @@ import ipywidgets as widgets
 from ipywidgets import Layout,Label, HBox, VBox
 import os
 import subprocess
+import c_utils
 
 def show(data,cmd_run):
     out = widgets.Output(layout={'border': '1px solid black'})
@@ -35,14 +36,7 @@ def show(data,cmd_run):
         out.clear_output()
         with out:
             temp = False
-            sd_dir = ""
-            
-            if os.path.exists("/root/stable-diffusion-webui"):
-                sd_dir = "/root/stable-diffusion-webui"
-            elif os.path.exists("/root/autodl-tmp/stable-diffusion-webui"):
-                sd_dir = "/root/autodl-tmp/stable-diffusion-webui"
-            else:
-                sd_dir = "-1"
+            sd_dir = c_utils.get_sd_dir()
 
             if sd_dir == "-1":
                 print("无法找到程序目录")
