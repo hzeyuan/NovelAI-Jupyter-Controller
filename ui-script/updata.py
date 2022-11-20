@@ -41,20 +41,22 @@ def show(data,cmd_run):
             if sd_dir == "-1":
                 print("无法找到程序目录")
             else:
+                head = "echo 正在更新请稍等... && "
+                tail = " && echo 更新完成!"
                 if index == 0:
-                    data["cmd"] = "cd /root/NovelAI-Jupyter-Controller && git fetch --all && git reset --hard origin && git pull"
+                    data["cmd"] = head + "cd /root/NovelAI-Jupyter-Controller && git fetch --all && git reset --hard origin && git pull" + tail
                     cmd_run()
                     
                 if index == 1:
-                    data["cmd"] = "cd " + sd_dir + " && git pull"
+                    data["cmd"] = head + "cd " + sd_dir + " && git pull" + tail
                     cmd_run()
 
                 if index == 2:
-                    data["cmd"] = "cd " + sd_dir + "/extensions/sd_dreambooth_extension" + " && git pull"
+                    data["cmd"] = head + "cd " + sd_dir + "/extensions/sd_dreambooth_extension" + " && git pull" + tail
                     cmd_run()
 
                 if index == 3:
-                    data["cmd"] = "cd " + sd_dir + "/extensions/stable-diffusion-webui-localization-zh_CN" + " && git pull"
+                    data["cmd"] = head + "cd " + sd_dir + "/extensions/stable-diffusion-webui-localization-zh_CN" + " && git pull" + tail
                     cmd_run()
     
     def updata_controller_buttom_(self):
