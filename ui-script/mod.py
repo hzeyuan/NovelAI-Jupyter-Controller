@@ -23,7 +23,7 @@ def show(data,cmd_run):
     def run_click(self):
         out.clear_output()
         with out:
-            data["cmd"] = "cd /root/autodl-tmp/ && aria2c -x8 --seed-time=0 '" + url.value + "' && echo 下载完毕"
+            data["cmd"] = "cd /root/autodl-tmp/ && aria2c -x8 --seed-time=0 '" + url.value + "' && echo 下载完毕!文件已保存到/root/autodl-tmp/"
             cmd_run()
 
     
