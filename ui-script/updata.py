@@ -6,6 +6,15 @@ import subprocess
 def show(data,cmd_run):
     out = widgets.Output(layout={'border': '1px solid black'})
 
+    # !cd /root/NovelAI-Jupyter-Controller && git fetch --all && git reset --hard origin && git pull
+    
+    updata_controller_buttom = widgets.Button(
+            description='更新启动器(注意这是强制覆盖)',
+            style={'description_width': 'initial'},
+            layout=Layout(width='auto', height='auto'),
+            button_style='primary'
+    )
+    
     updata_webui_buttom = widgets.Button(
             description='更新WebUi',
             button_style='success'
@@ -38,6 +47,10 @@ def show(data,cmd_run):
             if sd_dir == "-1":
                 print("无法找到程序目录")
             else:
+                if index == 0:
+                    data["cmd"] = "cd /root/NovelAI-Jupyter-Controller && git fetch --all && git reset --hard origin && git pull"
+                    cmd_run()
+                    
                 if index == 1:
                     data["cmd"] = "cd " + sd_dir + " && git pull"
                     cmd_run()
@@ -49,7 +62,10 @@ def show(data,cmd_run):
                 if index == 3:
                     data["cmd"] = "cd " + sd_dir + "/extensions/stable-diffusion-webui-localization-zh_CN" + " && git pull"
                     cmd_run()
-            
+    
+    def updata_controller_buttom_(self):
+        run_click(0)   
+    
     def updata_webui_buttom_(self):
         run_click(1)
 
@@ -60,11 +76,12 @@ def show(data,cmd_run):
         run_click(3)
     
     #绑定加速函数
+    updata_controller_buttom.on_click(updata_controller_buttom_)
     updata_webui_buttom.on_click(updata_webui_buttom_)
     updata_db_buttom.on_click(updata_db_buttom_)
     updata_chinese_buttom.on_click(updata_chinese_buttom_)
     
-    display(updata_webui_buttom,updata_db_buttom,updata_chinese_buttom)
+    display(updata_controller_buttom,updata_webui_buttom,updata_db_buttom,updata_chinese_buttom)
     
     return out
         
