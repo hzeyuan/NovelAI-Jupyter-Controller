@@ -41,7 +41,7 @@ def show(data,cmd_run):
             if sd_dir == "-1":
                 print("无法找到程序目录")
             else:
-                head = "echo 正在更新请稍等... && "
+                head = "echo 正在更新，请稍等... && "
                 tail = " && echo 更新完成!"
                 if index == 0:
                     data["cmd"] = head + "cd /root/NovelAI-Jupyter-Controller && git fetch --all && git reset --hard origin && git pull" + tail

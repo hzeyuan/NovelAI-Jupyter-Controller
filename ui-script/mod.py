@@ -2,8 +2,9 @@ import ipywidgets as widgets
 from ipywidgets import Layout,Label, HBox, VBox
 import os
 import subprocess
+import c_utils
 
-def show(data,cmd_run):
+def show(data,cmd_):
     out = widgets.Output(layout={'border': '1px solid black'})
 
     url = widgets.Textarea(
@@ -12,6 +13,13 @@ def show(data,cmd_run):
         description='',
         disabled=False,
         layout=Layout(width='400px', height='80px')
+    )
+    
+    pos_list = widgets.Dropdown(
+        options=[('embeddings目录(PT)', 1), ('hypernetworks目录(PT)', 2), ('大模型目录(CKPT)', 3), ('数据盘(autodl-tmp)', 4)],
+        value=4,
+        description='你需要安装到的位置:',
+        disabled=False,
     )
     
     download_buttom = widgets.Button(
@@ -23,14 +31,13 @@ def show(data,cmd_run):
     def run_click(self):
         out.clear_output()
         with out:
-            data["cmd"] = "cd /root/autodl-tmp/ && aria2c -x8 --seed-time=0 '" + url.value + "' && echo 下载完毕!文件已保存到/root/autodl-tmp/"
-            cmd_run()
+            cmd_(c_utils.get_download_command(url.value,pos_list.value))
 
     
     #绑定加速函数
     download_buttom.on_click(run_click)
     
-    display(url,download_buttom)
+    display(url,pos_list,download_buttom)
     
     return out
         

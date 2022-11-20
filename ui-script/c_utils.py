@@ -22,6 +22,8 @@ def get_download_dir(style):
             mv_dir = sd_dir + hypernetworks_dir_2
         if style == 3:
             mv_dir = sd_dir + ckpt_dir_3
+        if style == 4:
+            mv_dir = "/root/autodl-tmp/"
         return mv_dir
     else:
         return "-1"
@@ -32,4 +34,4 @@ def get_download_command(url,style):
         command = "cd " + download_dir + " && aria2c -x8 --seed-time=0 '" + url + "' && echo 下载完毕!文件已保存到" + download_dir
         return command
     else:
-        return "-1"
+        return "echo 未找到目录!无法下载!"
