@@ -17,6 +17,12 @@ mod_list = [
     "pos":3
 },
 {
+    "name":"Anything v3.0 (极速)",
+    "url":['https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/Anything-V3.0.ckpt',
+           'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/Anything-V3.0.vae.pt'],
+    "pos":3
+},
+{
     "name":"momoko_e (极速)",
     "url":['https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/momoko-e.ckpt'],
     "pos":3

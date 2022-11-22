@@ -44,7 +44,7 @@ def show(data,cmd_run):
                 head = "echo 正在更新，请稍等... && "
                 tail = " && echo 更新完成!"
                 if index == 0:
-                    data["cmd"] = head + "cd /root/NovelAI-Jupyter-Controller && git fetch --all && git reset --hard origin && git pull" + tail
+                    data["cmd"] = head + "cd /root/NovelAI-Jupyter-Controller && git fetch --all && git reset --hard origin && git pull" + tail + " && echo 请关闭所有内核并关闭所有窗口重新打开"
                     cmd_run()
                     
                 if index == 1:
