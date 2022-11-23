@@ -33,8 +33,8 @@ mod_list = [
     "pos":3
 },
 {
-    "name":"MakotoNiitsu (极速)",
-    "url":['https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/xhcstyle_8500.ckpt'],
+    "name":"MakotoNiitsu-1.1-xhc [新海诚画风] (极速)",
+    "url":['https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/xhc.ckpt'],
     "pos":3
 }
 ]
