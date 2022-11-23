@@ -31,6 +31,11 @@ mod_list = [
     "name":"NovelAI-7G (极速)",
     "url":['https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/NovelAI-7G.ckpt'],
     "pos":3
+},
+{
+    "name":"MakotoNiitsu (极速)",
+    "url":['https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/xhcstyle_8500.ckpt'],
+    "pos":3
 }
 ]
 
