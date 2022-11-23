@@ -77,6 +77,10 @@ def show(cmd_):
         temp_box = HBox([file_temp, file_temp_download_buttom])
         items.append(temp_box)
         
+    xformers_tip = widgets.HTML(
+        value="<font size='2' color='red'>TIP:如果极速版下载慢，请打开学术加速</font>",
+    )
+        
     grid = GridBox(children=items,
         layout=Layout(
             width='100%',
@@ -85,7 +89,7 @@ def show(cmd_):
             grid_gap='5px 10px')
        )
     
-    display(grid)
+    display(xformers_tip,grid)
     
     return out
         
