@@ -1,10 +1,17 @@
 import ipywidgets as widgets
 from ipywidgets import Layout,Label, HBox, VBox
 import os
-import subprocess
 
-def show(data,cmd_run):
+import Utils
+
+def getUi(data,cmd_run):
     out = widgets.Output(layout={'border': '1px solid black'})
+    
+    start_tip = widgets.HTML(
+        value="<p>启动完毕后通过自定义服务打开网站</p><p><font color='#0fa3ff'><a href='https://www.autodl.com/console/instance/list'>点击此处打开服务器列表</a><font/></p><p></p>",
+    )
+    
+    # ======================
     
     position_set = widgets.RadioButtons(
             options=['系统盘(root)', '数据盘(root/autodl-tmp)'],
@@ -59,8 +66,7 @@ def show(data,cmd_run):
                 if not temp:
                     if os.path.exists("/root/autodl-tmp/stable-diffusion-webui"):
                         print("程序目录不正确，正在自动调整...")
-                        data["cmd"] = "mv /root/autodl-tmp/stable-diffusion-webui /root/"
-                        cmd_run()
+                        cmd_run("mv /root/autodl-tmp/stable-diffusion-webui /root/")
                         print("移动完成")
                     else:
                         print("没有找到stable-diffusion-webui程序!")
@@ -71,8 +77,7 @@ def show(data,cmd_run):
                 if not temp:
                     if os.path.exists("/root/stable-diffusion-webui"):
                         print("程序目录不正确，正在自动调整...")
-                        data["cmd"] = "mv /root/stable-diffusion-webui /root/autodl-tmp/"
-                        cmd_run()
+                        cmd_run("mv /root/stable-diffusion-webui /root/autodl-tmp/")
                         print("移动完成")
                     else:
                         print("没有找到stable-diffusion-webui程序!")
@@ -94,14 +99,10 @@ def show(data,cmd_run):
             else:
                 xf = ""
 
-            data["cmd"] = "cd " + sd_dir + " && python launch.py --disable-safe-unpickle --port=6006 " + deepd + xf + speed
-            cmd_run()
+            cmd_run("cd " + sd_dir + " && python launch.py --disable-safe-unpickle --port=6006 " + deepd + xf + speed)
         # os.system("cd /root/stable-diffusion-webui/ && python launch.py --disable-safe-unpickle --port=6006 " + deepd + speed)
     
     #绑定加速函数
     run_buttom.on_click(run_click)
     
-    display(position_set_tip,position_set,info,deepdanbooru,left_box,run_buttom)
-    
-    return out
-        
+    return VBox([start_tip,position_set_tip,position_set,info,deepdanbooru,left_box,run_buttom,out])

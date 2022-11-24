@@ -1,8 +1,8 @@
 import ipywidgets as widgets
-from ipywidgets import Layout,Label, HBox, VBox, GridBox
+from ipywidgets import Layout,Label,HBox,VBox,GridBox
 import os
-import subprocess
-import c_utils
+
+import Utils
 
 mod_list = [
 {
@@ -39,8 +39,77 @@ mod_list = [
 }
 ]
 
-def show(cmd_):
+def getUi(data,cmd_run):
     out = widgets.Output(layout={'border': '1px solid black'})
+    
+    mod_tip = widgets.HTML(
+        value="<font size='2' color='red'>下载前记得安装下载器，安装前记得开启学术加速</font>",
+    )
+    
+    install_download = None
+    with out:
+        if Utils.get_have_aria2() == False:
+            install_download = widgets.Button(
+                description='点我安装下载器',
+                disabled=False,
+                button_style='info', # 'success', 'info', 'warning', 'danger' or '',
+                layout=Layout(width='auto', height='auto'),
+                icon='download'
+            )
+        else:
+            install_download = widgets.Button(
+                description='已成功安装下载器',
+                disabled=False,
+                button_style='success', # 'success', 'info', 'warning', 'danger' or '',
+                layout=Layout(width='auto', height='auto'),
+                icon='check'
+            )
+    out.clear_output()
+
+    def download(self):
+        if Utils.get_have_aria2() == False:
+            with out:
+                cmd_run("cd /root/autodl-tmp/ && apt-get update && apt-get install aria2 -y && echo 安装完成")
+                install_download.description='已成功安装下载器'
+                install_download.button_style='success'
+                install_download.icon='check'
+            out.clear_output()
+        
+    install_download.on_click(download)
+    
+    # ====================
+    
+    url = widgets.Textarea(
+        value='',
+        placeholder='请输入下载直链或种子地址',
+        description='',
+        disabled=False,
+        layout=Layout(width='400px', height='80px')
+    )
+    
+    pos_list = widgets.Dropdown(
+        options=[('embeddings目录(PT)', 1), ('hypernetworks目录(PT)', 2), ('大模型目录(CKPT)', 3), ('数据盘(autodl-tmp)', 4)],
+        value=4,
+        description='你需要安装到的位置:',
+        style={'description_width': 'initial'},
+        disabled=False,
+    )
+    
+    download_buttom = widgets.Button(
+        description='下载文件',
+        button_style='success'
+    )
+    
+    def run_click(self):
+        out.clear_output()
+        with out:
+            cmd_run(Utils.get_download_command(url.value,pos_list.value))
+    
+    download_buttom.on_click(run_click)
+    
+    my_url = VBox([url,pos_list,download_buttom])
+    
+    # ====================
     
     items = []
     
@@ -51,12 +120,12 @@ def show(cmd_):
             out.clear_output()
             with out:
                 if len(mod_list[self.index]["url"]) == 1:
-                    cmd_(c_utils.get_download_command(mod_list[self.index]["url"][0],mod_list[self.index]["pos"]))
+                    cmd_run(Utils.get_download_command(mod_list[self.index]["url"][0],mod_list[self.index]["pos"]))
                 if len(mod_list[self.index]["url"]) > 1:
                     print("当前需要下载" + str(len(mod_list[self.index]["url"])) + "个文件，请稍等")
                     for j in range(len(mod_list[self.index]["url"])):
                         print("正在下载第" + str(j+1) + "个文件")
-                        cmd_(c_utils.get_download_command(mod_list[self.index]["url"][j],mod_list[self.index]["pos"]))
+                        cmd_run(Utils.get_download_command(mod_list[self.index]["url"][j],mod_list[self.index]["pos"]))
                         print("第" + str(j+1) + "个文件下载完毕")
                     print("全部文件下载完毕!")
     
@@ -89,7 +158,16 @@ def show(cmd_):
             grid_gap='5px 10px')
        )
     
-    display(xformers_tip,grid)
+    other_url = VBox([xformers_tip,grid])
     
-    return out
-        
+    # ====================
+    
+    accordion = widgets.Accordion(children=[my_url, other_url])
+    accordion.set_title(0, '自定义链接下载')
+    accordion.set_title(1, '内置模型下载')
+    accordion.selected_index = None
+
+    line1 = HBox([install_download])
+    box = VBox([mod_tip,line1,accordion,out])
+
+    return box

@@ -1,5 +1,27 @@
 import os
 
+ip_list = {
+    '芜湖区':'192.168.0.91',
+    '北京A区':'100.72.64.19',
+    '内蒙A区':'192.168.1.174',
+    '泉州A区':'10.55.146.88',
+    '南京新手区':'172.181.217.43',
+    '佛山区':'192.168.126.12'
+}
+
+def get_speed_ip():
+    for item in ip_list:
+        print(item)
+        if(os.system(f'ping -c 1 -w 1 {ip_list[item]}') == 0):
+            return [item,ip_list[item]]
+    return '-1'
+
+def get_is_speed():
+    return os.getenv("http_proxy") != None
+
+def get_have_aria2():
+    return os.system(f'aria2c -v') == 0
+
 embeddings_dir_1 = "/embeddings"
 hypernetworks_dir_2 = "/models/hypernetworks"
 ckpt_dir_3 = "/models/Stable-diffusion"
