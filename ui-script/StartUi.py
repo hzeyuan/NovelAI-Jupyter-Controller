@@ -8,7 +8,7 @@ def getUi(data,cmd_run):
     out = widgets.Output(layout={'border': '1px solid black'})
     
     start_tip = widgets.HTML(
-        value="<p>启动完毕后通过自定义服务打开网站</p><p><font color='#0fa3ff'><a href='https://www.autodl.com/console/instance/list'>点击此处打开服务器列表</a><font/></p><p></p>",
+        value="<p>启动完毕后通过自定义服务打开网站</p><p><font color='#0fa3ff'><a href='https://www.autodl.com/console/instance/list' target='_blank'>点击此处打开服务器列表</a><font/></p><p></p>",
     )
     
     # ======================
