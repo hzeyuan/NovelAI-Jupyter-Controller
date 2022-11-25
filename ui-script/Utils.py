@@ -1,4 +1,5 @@
 import os
+import random
 
 ip_list = {
     '芜湖区':'192.168.0.91',
@@ -57,3 +58,11 @@ def get_download_command(url,style):
         return command
     else:
         return "echo 未找到目录!无法下载!"
+
+def generate_random_str(randomlength = 8):
+    random_str = ''
+    base_str ='ABCDEFGHIGKLMNOPQRSTUVWXYZabcdefghigklmnopqrstuvwxyz0123456789'
+    length = len(base_str) -1
+    for i in range(randomlength):
+        random_str += base_str[random.randint(0, length)]
+    return random_str

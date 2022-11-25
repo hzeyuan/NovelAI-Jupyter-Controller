@@ -13,6 +13,27 @@ def getUi(data,cmd_run):
     
     # ======================
     
+    auth_set_tip = widgets.HTML(
+        value="<font size='2' color='red'>为了保证完全，下方设置的用户信息将会在启动share的时候自动设置</font>",
+    )
+    
+    name_input = widgets.Text(
+        value='',
+        placeholder='留空则随机',
+        description='用户名:',
+        disabled=False
+    )
+    pass_input = widgets.Text(
+        value='',
+        placeholder='留空则随机',
+        description='密码:',
+        disabled=False
+    )
+    
+    position_set_tip = widgets.HTML(
+        value="<font size='2' color='red'>推荐在训练的时候选择数据盘，更节约空间。请勿频繁切换，切换至数据盘后尽量别再切换为系统盘，以免空间不足造成移动时失败!</font>",
+    )
+    
     position_set = widgets.RadioButtons(
             options=['系统盘(root)', '数据盘(root/autodl-tmp)'],
             value='系统盘(root)', # Defaults to 'pineapple'
@@ -21,10 +42,6 @@ def getUi(data,cmd_run):
             description='请选择你需要stable-diffusion-webui所运行的目录:',
             disabled=False
         )
-    
-    position_set_tip = widgets.HTML(
-        value="<font size='2' color='red'>推荐在训练的时候选择数据盘，更节约空间。请勿频繁切换，切换至数据盘后尽量别再切换为系统盘，以免空间不足造成移动时失败!</font>",
-    )
 
     info = widgets.Label('请选择需要开启的参数:')
     
@@ -48,6 +65,13 @@ def getUi(data,cmd_run):
     )
     
     left_box = HBox([xformers, xformers_tip])
+    
+    disable_safe = widgets.Checkbox(
+        value=True,
+        description='disable-safe-unpickle(是否不启动安全检查)',
+        disabled=False,
+        indent=False
+    )
 
     run_buttom = widgets.Button(
             description='运行WebUi',
@@ -85,7 +109,17 @@ def getUi(data,cmd_run):
 
 
             if data["is_speed"] == True:
-                speed = "--share "
+                name_ = name_input.value
+                pass_ = pass_input.value
+                if name_ == '':
+                    name_ = Utils.generate_random_str()
+                if pass_ == '':
+                    pass_ = Utils.generate_random_str()
+                
+                
+                speed = "--share --gradio-auth " + name_ + ":" + pass_ + " "
+                name_input.value = name_
+                pass_input.value = pass_
             else:
                 speed = ""
 
@@ -98,11 +132,16 @@ def getUi(data,cmd_run):
                 xf = "--xformers "
             else:
                 xf = ""
+                
+            if disable_safe.value == True:
+                safe = "--disable-safe-unpickle"
+            else:
+                safe = ""
 
-            cmd_run("cd " + sd_dir + " && python launch.py --disable-safe-unpickle --port=6006 " + deepd + xf + speed)
+            cmd_run("cd " + sd_dir + " && python launch.py " + safe + " --port=6006 " + deepd + xf + speed)
         # os.system("cd /root/stable-diffusion-webui/ && python launch.py --disable-safe-unpickle --port=6006 " + deepd + speed)
     
     #绑定加速函数
     run_buttom.on_click(run_click)
     
-    return VBox([start_tip,position_set_tip,position_set,info,deepdanbooru,left_box,run_buttom,out])
+    return VBox([start_tip,auth_set_tip,name_input,pass_input,position_set_tip,position_set,info,deepdanbooru,left_box,disable_safe,run_buttom,out])
