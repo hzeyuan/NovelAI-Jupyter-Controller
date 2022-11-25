@@ -1,8 +1,10 @@
 import ipywidgets as widgets
 from ipywidgets import Layout,Label, HBox, VBox
 import os
+import time
+import subprocess
 
-import Utils
+import Utils,ThreadOut
 
 def getUi(data,cmd_run):
     out = widgets.Output(layout={'border': '1px solid black'})
@@ -137,8 +139,13 @@ def getUi(data,cmd_run):
                 safe = "--disable-safe-unpickle"
             else:
                 safe = ""
-
-            cmd_run("cd " + sd_dir + " && python launch.py " + safe + " --port=6006 " + deepd + xf + speed)
+        
+            ThreadOut.run_thread_out(r"cd " + sd_dir + " && python -u launch.py " + safe + " --port=6006 " + deepd + xf + speed,out)
+            # bash("cd " + sd_dir + " && python launch.py " + safe + " --port=6006 " + deepd + xf + speed)
+            # bash("ping baidu.com")
+            # temp = subprocess.Popen(r"cd " + sd_dir + " && python launch.py " + safe + " --port=6006 " + deepd + xf + speed,shell=True)
+            # cmd_run("cd " + sd_dir + " && python launch.py " + safe + " --port=6006 " + deepd + xf + speed)
+            
         # os.system("cd /root/stable-diffusion-webui/ && python launch.py --disable-safe-unpickle --port=6006 " + deepd + speed)
     
     #绑定加速函数
