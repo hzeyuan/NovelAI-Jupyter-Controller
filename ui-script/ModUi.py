@@ -36,6 +36,12 @@ mod_list = [
     "name":"MakotoNiitsu-1.1-xhc [新海诚画风] (极速)",
     "url":['https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/xhc.ckpt'],
     "pos":3
+},
+{
+    "name":"768-v-ema [SD2.0] (极速)",
+    "url":['https://huggingface.co/stabilityai/stable-diffusion-2/resolve/main/768-v-ema.ckpt',
+          'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/768-v-ema.yaml'],
+    "pos":3
 }
 ]
 
