@@ -38,7 +38,7 @@ mod_list = [
     "pos":3
 },
 {
-    "name":"768-v-ema [SD2.0] (极速)",
+    "name":"768-v-ema [SD2.0] [记得更新webui到最新版本在安装！！！] (极速)",
     "url":['https://huggingface.co/stabilityai/stable-diffusion-2/resolve/main/768-v-ema.ckpt',
           'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/768-v-ema.yaml'],
     "pos":3
