@@ -32,18 +32,37 @@ def getUi(data,cmd_run):
         disabled=False
     )
     
+    # ======================
+    
     position_set_tip = widgets.HTML(
         value="<font size='2' color='red'>推荐在训练的时候选择数据盘，更节约空间。请勿频繁切换，切换至数据盘后尽量别再切换为系统盘，以免空间不足造成移动时失败!</font>",
     )
     
     position_set = widgets.RadioButtons(
             options=['系统盘(root)', '数据盘(root/autodl-tmp)'],
-            value='系统盘(root)', # Defaults to 'pineapple'
+            value='数据盘(root/autodl-tmp)', # Defaults to 'pineapple'
             style={'description_width': 'initial'},
             layout=Layout(width='100%', height='50px'),
             description='请选择你需要stable-diffusion-webui所运行的目录:',
             disabled=False
         )
+    
+    # ======================
+    
+    run_stylet_tip = widgets.HTML(
+        value="<font size='2' color='red'>注意：后台版无法查看各类进度输出，导致你会怀疑程序卡住，同时会影响相关数据的查看 | 正常版运行后无法执行下载模型等操作，点击后不会有反应</font>",
+    )
+    
+    run_style_set = widgets.RadioButtons(
+            options=[('后台版(运行后你可以在其它窗口正常执行下载模型等功能)',1), ('正常版(运行后你无法在其它窗口正常执行下载模型等功能)',2)],
+            value=2, # Defaults to 'pineapple'
+            style={'description_width': 'initial'},
+            layout=Layout(width='100%', height='50px'),
+            description='请选择stable-diffusion-webui的运行方式:',
+            disabled=False
+        )
+    
+    # ======================
 
     info = widgets.Label('请选择需要开启的参数:')
     
@@ -140,7 +159,11 @@ def getUi(data,cmd_run):
             else:
                 safe = ""
         
-            ThreadOut.run_thread_out(r"cd " + sd_dir + " && python -u launch.py " + safe + " --port=6006 " + deepd + xf + speed,out)
+            if run_style_set.value == 1:
+                ThreadOut.run_thread_out(r"cd " + sd_dir + " && python -u launch.py " + safe + " --port=6006 " + deepd + xf + speed,out)
+            else:
+                cmd_run(r"cd " + sd_dir + " && python launch.py " + safe + " --port=6006 " + deepd + xf + speed)
+            
             # bash("cd " + sd_dir + " && python launch.py " + safe + " --port=6006 " + deepd + xf + speed)
             # bash("ping baidu.com")
             # temp = subprocess.Popen(r"cd " + sd_dir + " && python launch.py " + safe + " --port=6006 " + deepd + xf + speed,shell=True)
@@ -151,4 +174,10 @@ def getUi(data,cmd_run):
     #绑定加速函数
     run_buttom.on_click(run_click)
     
-    return VBox([start_tip,auth_set_tip,name_input,pass_input,position_set_tip,position_set,info,deepdanbooru,left_box,disable_safe,run_buttom,out])
+    return VBox([
+        start_tip,
+        auth_set_tip,name_input,pass_input,
+        position_set_tip,position_set,
+        run_stylet_tip,run_style_set,
+        info,deepdanbooru,left_box,disable_safe,run_buttom,out
+    ])
