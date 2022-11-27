@@ -47,6 +47,11 @@ mod_list = [
     "name":"moDi-v1-pruned [迪士尼画风] 关键词:[modern disney style] (极速)",
     "url":['https://huggingface.co/nitrosocke/mo-di-diffusion/resolve/main/moDi-v1-pruned.ckpt'],
     "pos":3
+},
+{
+    "name":"moDi-v1-pruned [3D现实风格] 关键词:[redshift style] (极速)",
+    "url":['https://huggingface.co/nitrosocke/redshift-diffusion/resolve/main/redshift-diffusion-v1.ckpt'],
+    "pos":3
 }
 ]
 
