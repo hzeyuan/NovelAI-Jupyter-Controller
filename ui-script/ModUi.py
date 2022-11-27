@@ -44,7 +44,7 @@ mod_list = [
     "pos":3
 },
 {
-    "name":"moDi-v1-pruned [迪士尼画风] 关键词:[archer style, arcane style or modern disney style] (极速)",
+    "name":"moDi-v1-pruned [迪士尼画风] 关键词:[modern disney style] (极速)",
     "url":['https://huggingface.co/nitrosocke/mo-di-diffusion/resolve/main/moDi-v1-pruned.ckpt'],
     "pos":3
 }
