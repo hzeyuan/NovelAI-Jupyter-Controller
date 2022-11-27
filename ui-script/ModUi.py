@@ -42,6 +42,11 @@ mod_list = [
     "url":['https://huggingface.co/stabilityai/stable-diffusion-2/resolve/main/768-v-ema.ckpt',
           'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/768-v-ema.yaml'],
     "pos":3
+},
+{
+    "name":"moDi-v1-pruned [迪士尼画风] 关键词:[archer style, arcane style or modern disney style] (极速)",
+    "url":['https://huggingface.co/nitrosocke/mo-di-diffusion/resolve/main/moDi-v1-pruned.ckpt'],
+    "pos":3
 }
 ]
 
@@ -159,8 +164,8 @@ def getUi(data,cmd_run):
     grid = GridBox(children=items,
         layout=Layout(
             width='100%',
-            grid_template_columns='auto auto auto',
-            grid_template_rows='auto auto auto',
+            grid_template_columns='auto auto',
+            grid_template_rows='auto auto',
             grid_gap='5px 10px')
        )
     

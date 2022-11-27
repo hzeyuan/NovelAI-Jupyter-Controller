@@ -54,7 +54,7 @@ def getUi(data,cmd_run):
     )
     
     run_style_set = widgets.RadioButtons(
-            options=[('后台版(运行后你可以在其它窗口正常执行下载模型等功能)',1), ('正常版(运行后你无法在其它窗口正常执行下载模型等功能)',2)],
+            options=[('后台版(运行后你可以在其它窗口正常执行下载模型等功能)[时间长后会导致卡顿]',1), ('正常版(运行后你无法在其它窗口正常执行下载模型等功能)',2)],
             value=2, # Defaults to 'pineapple'
             style={'description_width': 'initial'},
             layout=Layout(width='100%', height='50px'),
