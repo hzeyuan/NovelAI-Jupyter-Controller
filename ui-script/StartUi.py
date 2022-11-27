@@ -73,6 +73,8 @@ def getUi(data,cmd_run):
         indent=False
     )
     
+    # -------
+    
     xformers = widgets.Checkbox(
         value=False,
         description='xformers(极大改善内存消耗和速度)',
@@ -85,7 +87,9 @@ def getUi(data,cmd_run):
         value="<font size='2' color='red'>请勿在训练DreamBooth的时候打开它!</font>",
     )
     
-    left_box = HBox([xformers, xformers_tip])
+    xformers_box = HBox([xformers, xformers_tip])
+    
+    # -------
     
     disable_safe = widgets.Checkbox(
         value=True,
@@ -93,7 +97,30 @@ def getUi(data,cmd_run):
         disabled=False,
         indent=False
     )
+    
+    disable_tip = widgets.HTML(
+        value="<font size='2' color='red'>取消勾选可能导致启动报错</font>",
+    )
+    
+    disable_box = HBox([disable_safe, disable_tip])
 
+    # -------
+    
+    insecure_extension_access = widgets.Checkbox(
+        value=False,
+        description='extension-access(启用不安全的扩展访问)',
+        disabled=False,
+        indent=False
+    )
+    
+    insecure_extension_access_tip = widgets.HTML(
+        value="<font size='2' color='blue'>勾选后将允许在webui扩展中安装任意扩展 </font><font size='2' color='red'>(注意安装后点重启并应用会报错，记得自行重启)</font>",
+    )
+    
+    insecure_extension_access_box = HBox([insecure_extension_access, insecure_extension_access_tip])
+    
+    # -------
+    
     run_buttom = widgets.Button(
             description='运行WebUi',
             button_style='success'
@@ -155,14 +182,19 @@ def getUi(data,cmd_run):
                 xf = ""
                 
             if disable_safe.value == True:
-                safe = "--disable-safe-unpickle"
+                safe = "--disable-safe-unpickle "
             else:
                 safe = ""
+                
+            if insecure_extension_access.value == True:
+                extension = "--enable-insecure-extension-access "
+            else:
+                extension = ""
         
             if run_style_set.value == 1:
-                ThreadOut.run_thread_out(r"cd " + sd_dir + " && python -u launch.py " + safe + " --port=6006 " + deepd + xf + speed,out)
+                ThreadOut.run_thread_out(r"cd " + sd_dir + " && python -u launch.py " + safe + " --port=6006 " + deepd + xf + speed + extension,out)
             else:
-                cmd_run(r"cd " + sd_dir + " && python launch.py " + safe + " --port=6006 " + deepd + xf + speed)
+                cmd_run(r"cd " + sd_dir + " && python launch.py " + safe + " --port=6006 " + deepd + xf + speed + extension)
             
             # bash("cd " + sd_dir + " && python launch.py " + safe + " --port=6006 " + deepd + xf + speed)
             # bash("ping baidu.com")
@@ -179,5 +211,5 @@ def getUi(data,cmd_run):
         auth_set_tip,name_input,pass_input,
         position_set_tip,position_set,
         run_stylet_tip,run_style_set,
-        info,deepdanbooru,left_box,disable_safe,run_buttom,out
+        info,deepdanbooru,xformers_box,disable_box,insecure_extension_access_box,run_buttom,out
     ])

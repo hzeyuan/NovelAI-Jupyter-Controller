@@ -14,6 +14,7 @@ def show(data,cmd_run):
     )
     if os.getenv("http_proxy") != None:
         speed.description = "目前你正处于之前的加速状态,但你依旧可以重新点击自动学术加速"
+        data["is_speed"] = True
 
     def autospeed(self):
         if data["is_speed"] != True:
