@@ -1,5 +1,6 @@
 import os
 import random
+import hashlib
 
 ip_list = {
     '芜湖区':'192.168.0.91',
@@ -66,3 +67,37 @@ def generate_random_str(randomlength = 8):
     for i in range(randomlength):
         random_str += base_str[random.randint(0, length)]
     return random_str
+
+def model_hash(filename):
+    try:
+        with open(filename, "rb") as file:
+            import hashlib
+            m = hashlib.sha256()
+
+            file.seek(0x100000)
+            m.update(file.read(0x10000))
+            return m.hexdigest()[0:8]
+    except FileNotFoundError:
+        return 'NOFILE'
+    
+def get_style_mod_dir(style):
+    sd_dir = get_sd_dir()
+    mv_dir = "-1"
+    
+    if style == 1:
+        mv_dir = sd_dir + embeddings_dir_1
+    if style == 2:
+        mv_dir = sd_dir + hypernetworks_dir_2
+    if style == 3:
+        mv_dir = sd_dir + ckpt_dir_3
+    
+    return mv_dir
+    
+def scan_dir_hash(style):
+    mod_dir = get_style_mod_dir(style)
+    hash_list = []
+    for file_name in os.listdir(mod_dir):
+        file_dir = mod_dir + "/" + file_name
+        if os.path.isfile(file_dir):
+            hash_list.append(model_hash(file_dir))
+    return hash_list
