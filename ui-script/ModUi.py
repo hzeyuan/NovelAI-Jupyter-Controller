@@ -31,7 +31,7 @@ mod_list = [
     "hash":'e6e8e1fc'
 },
 {
-    "name":"MakotoNiitsu-1.1-xhc [新海诚画风] (极速)",
+    "name":"MakotoNiitsu-1.1-xhc [新海诚画风] 推荐：DDIM采样器生成 (极速)",
     "url":['https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/xhc.ckpt'],
     "pos":3,
     "hash":'33044c56'
