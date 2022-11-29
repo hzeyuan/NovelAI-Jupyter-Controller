@@ -121,6 +121,21 @@ def getUi(data,cmd_run):
     
     # -------
     
+    picture_extension = widgets.Checkbox(
+        value=False,
+        description='Api+扩图允许(启用Api访问，并允许扩图访问)',
+        disabled=False,
+        indent=False
+    )
+    
+    picture_extension_tip = widgets.HTML(
+        value="<font size='2' color='blue'>勾选后将允许使用扩图功能 </font><font size='2' color='red'>(注意打开后请勿开启学术加速，不然不能访问) </font><font color='#0fa3ff'><a href='https://www.painthua.com/' target='_blank'>点我访问扩图网站</a><font/>",
+    )
+    
+    picture_extension_box = HBox([picture_extension, picture_extension_tip])
+    
+    # -------
+    
     run_buttom = widgets.Button(
             description='运行WebUi',
             button_style='success'
@@ -190,11 +205,16 @@ def getUi(data,cmd_run):
                 extension = "--enable-insecure-extension-access "
             else:
                 extension = ""
+               
+            if picture_extension.value == True:
+                pic_ext = "--api --cors-allow-origins=https://www.painthua.com "
+            else:
+                pic_ext = ""
         
             if run_style_set.value == 1:
-                ThreadOut.run_thread_out(r"cd " + sd_dir + " && python -u launch.py " + safe + " --port=6006 " + deepd + xf + speed + extension,out)
+                ThreadOut.run_thread_out(r"cd " + sd_dir + " && python -u launch.py " + safe + " --port=6006 " + deepd + xf + speed + extension + pic_ext,out)
             else:
-                cmd_run(r"cd " + sd_dir + " && python launch.py " + safe + " --port=6006 " + deepd + xf + speed + extension)
+                cmd_run(r"cd " + sd_dir + " && python launch.py " + safe + " --port=6006 " + deepd + xf + speed + extension + pic_ext)
             
             # bash("cd " + sd_dir + " && python launch.py " + safe + " --port=6006 " + deepd + xf + speed)
             # bash("ping baidu.com")
@@ -211,5 +231,5 @@ def getUi(data,cmd_run):
         auth_set_tip,name_input,pass_input,
         position_set_tip,position_set,
         run_stylet_tip,run_style_set,
-        info,deepdanbooru,xformers_box,disable_box,insecure_extension_access_box,run_buttom,out
+        info,deepdanbooru,xformers_box,disable_box,insecure_extension_access_box,picture_extension_box,run_buttom,out
     ])
