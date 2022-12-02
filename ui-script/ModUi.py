@@ -54,6 +54,13 @@ mod_list = [
     "url":['https://huggingface.co/nitrosocke/redshift-diffusion/resolve/main/redshift-diffusion-v1.ckpt'],
     "pos":3,
     "hash":'74f4c61c'
+},
+{
+    "name":"gamecg [动漫CG人物] (极速)",
+    "url":['https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/gamecg_9702.ckpt',
+          'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/gamecg_9702.vae.pt'],
+    "pos":3,
+    "hash":''
 }
 ]
 
