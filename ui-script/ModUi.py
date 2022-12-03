@@ -57,9 +57,10 @@ mod_list = [
 },
 {
     "name":"gamecg [动漫CG人物] (晚点重新上传文件可能上传时损坏了，请勿下载)",
-    "url":[''],
+    "url":['https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/gamecg_9702.ckpt',
+          'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/gamecg_9702.vae.pt'],
     "pos":3,
-    "hash":''
+    "hash":'a72f551b'
 }
 ]
 
