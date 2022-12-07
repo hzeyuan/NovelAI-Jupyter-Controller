@@ -4,63 +4,85 @@ import os
 
 import Utils
 
-mod_list = [
+mod_list2 = [
 {
     "name":"Stable Diffusion v1.5 (慢)",
-    "url":["magnet:?xt=urn:btih:2daef5b5f63a16a9af9169a529b1a773fc452637&dn=v1-5-pruned-emaonly.ckpt&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2f9.rarbg.com%3a2810%2fannounce&tr=udp%3a%2f%2ftracker.openbittorrent.com%3a6969%2fannounce&tr=udp%3a%2f%2fopentracker.i2p.rocks%3a6969%2fannounce&tr=https%3a%2f%2fopentracker.i2p.rocks%3a443%2fannounce&tr=http%3a%2f%2ftracker.openbittorrent.com%3a80%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce&tr=udp%3a%2f%2fopen.stealth.si%3a80%2fannounce&tr=udp%3a%2f%2fvibe.sleepyinternetfun.xyz%3a1738%2fannounce&tr=udp%3a%2f%2ftracker2.dler.org%3a80%2fannounce&tr=udp%3a%2f%2ftracker1.bt.moack.co.kr%3a80%2fannounce&tr=udp%3a%2f%2ftracker.zemoj.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.tiny-vps.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.theoks.net%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.publictracker.xyz%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.monitorit4.me%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.moeking.me%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.lelux.fi%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.dler.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.army%3a6969%2fannounce"],
-    "pos":3,
+    "urls":[
+        {"url":"magnet:?xt=urn:btih:2daef5b5f63a16a9af9169a529b1a773fc452637&dn=v1-5-pruned-emaonly.ckpt&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2f9.rarbg.com%3a2810%2fannounce&tr=udp%3a%2f%2ftracker.openbittorrent.com%3a6969%2fannounce&tr=udp%3a%2f%2fopentracker.i2p.rocks%3a6969%2fannounce&tr=https%3a%2f%2fopentracker.i2p.rocks%3a443%2fannounce&tr=http%3a%2f%2ftracker.openbittorrent.com%3a80%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce&tr=udp%3a%2f%2fopen.stealth.si%3a80%2fannounce&tr=udp%3a%2f%2fvibe.sleepyinternetfun.xyz%3a1738%2fannounce&tr=udp%3a%2f%2ftracker2.dler.org%3a80%2fannounce&tr=udp%3a%2f%2ftracker1.bt.moack.co.kr%3a80%2fannounce&tr=udp%3a%2f%2ftracker.zemoj.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.tiny-vps.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.theoks.net%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.publictracker.xyz%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.monitorit4.me%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.moeking.me%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.lelux.fi%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.dler.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.army%3a6969%2fannounce","pos":3}
+    ],
     "hash":'81761151'
 },
 {
     "name":"Anything v3.0 (极速)",
-    "url":['https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/Anything-V3.0.ckpt',
-           'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/Anything-V3.0.vae.pt'],
-    "pos":3,
+    "urls":[
+        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/Anything-V3.0.ckpt',"pos":3},
+        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/Anything-V3.0.vae.pt',"pos":3}
+    ],
     "hash":'1a7df6b8'
 },
 {
     "name":"momoko_e (极速)",
-    "url":['https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/momoko-e.ckpt'],
-    "pos":3,
+    "urls":[
+        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/momoko-e.ckpt',"pos":3}
+    ],
     "hash":'a2a802b2'
 },
 {
     "name":"NovelAI-7G (极速)",
-    "url":['https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/NovelAI-7G.ckpt'],
-    "pos":3,
+    "urls":[
+        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/NovelAI-7G.ckpt',"pos":3}
+    ],
     "hash":'e6e8e1fc'
 },
 {
     "name":"MakotoNiitsu-1.1-xhc [新海诚画风] 推荐：DDIM采样器生成 (极速)",
-    "url":['https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/xhc.ckpt'],
-    "pos":3,
+    "urls":[
+        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/xhc.ckpt',"pos":3}
+    ],
     "hash":'33044c56'
 },
 {
     "name":"768-v-ema [SD2.0] [记得更新webui到最新版本在安装！！！] (极速)",
-    "url":['https://huggingface.co/stabilityai/stable-diffusion-2/resolve/main/768-v-ema.ckpt',
-          'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/768-v-ema.yaml'],
-    "pos":3,
+    "urls":[
+        {"url":'https://huggingface.co/stabilityai/stable-diffusion-2/resolve/main/768-v-ema.ckpt',"pos":3},
+        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/768-v-ema.yaml',"pos":3}
+    ],
     "hash":'2c02b20a'
 },
 {
     "name":"moDi-v1-pruned [迪士尼画风] 关键词:[modern disney style] (极速)",
-    "url":['https://huggingface.co/nitrosocke/mo-di-diffusion/resolve/main/moDi-v1-pruned.ckpt'],
-    "pos":3,
+    "urls":[
+        {"url":'https://huggingface.co/nitrosocke/mo-di-diffusion/resolve/main/moDi-v1-pruned.ckpt',"pos":3}
+    ],
     "hash":'ccf3615f'
 },
 {
     "name":"redshift-diffusion-v1 [3D现实风格] 关键词:[redshift style] (极速)",
-    "url":['https://huggingface.co/nitrosocke/redshift-diffusion/resolve/main/redshift-diffusion-v1.ckpt'],
-    "pos":3,
+    "urls":[
+        {"url":'https://huggingface.co/nitrosocke/redshift-diffusion/resolve/main/redshift-diffusion-v1.ckpt',"pos":3}
+    ],
     "hash":'74f4c61c'
 },
 {
     "name":"gamecg [动漫CG人物类画风模型] (极速)",
-    "url":['https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/gamecg_9702.ckpt',
-          'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/gamecg_9702.vae.pt'],
-    "pos":3,
+    "urls":[
+        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/gamecg_9702.ckpt',"pos":3},
+        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/gamecg_9702.vae.pt',"pos":3}
+    ],
     "hash":'a72f551b'
+},
+{
+    "name":"矢车菊V4 [组合模型] (极速)",
+    "urls":[
+        {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/AnyJrny90.ckpt',"pos":3},
+        {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/embeddings/001glitch-core.pt',"pos":1},
+        {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/embeddings/8sconception.pt',"pos":1},
+        {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/embeddings/anime-background-style-v2.pt',"pos":1},
+        {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/embeddings/dreamcore.pt',"pos":1},
+        {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/embeddings/yaguru%20magiku.pt',"pos":1},
+        {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/hypernetworks/Yaguru_Magiku.pt',"pos":2}
+    ],
+    "hash":''
 }
 ]
 
@@ -139,23 +161,23 @@ def getUi(data,cmd_run):
     items = []
     
     class ClickItem:
-        def __init__(self, index):
+        def __init__(self,index):
             self.index = index
+        def downLoad(self,index):
+            # 获取数组中指定下标的元素
+            mod_data = mod_list2[index]
+            # 遍历每个元素的urls列表，调用cmd_run函数处理每个URL和pos值
+            for i, url in enumerate(mod_data['urls']):
+                print('正在下载第{}个文件，共{}个'.format(i+1, len(mod_data['urls'])))
+                cmd_run(Utils.get_download_command(url['url'], url['pos']))
         def click(self,temp):
             out.clear_output()
             temp.description='正在安装...'
             temp.disabled=True
             temp.button_style='warning'
             with out:
-                if len(mod_list[self.index]["url"]) == 1:
-                    cmd_run(Utils.get_download_command(mod_list[self.index]["url"][0],mod_list[self.index]["pos"]))
-                if len(mod_list[self.index]["url"]) > 1:
-                    print("当前需要下载" + str(len(mod_list[self.index]["url"])) + "个文件，请稍等")
-                    for j in range(len(mod_list[self.index]["url"])):
-                        print("正在下载第" + str(j+1) + "个文件")
-                        cmd_run(Utils.get_download_command(mod_list[self.index]["url"][j],mod_list[self.index]["pos"]))
-                        print("第" + str(j+1) + "个文件下载完毕")
-                    print("全部文件下载完毕!")
+                self.downLoad(self.index)
+                print("全部文件下载完毕!")
                 temp.description='已安装'
                 temp.disabled=True
                 temp.button_style='success'
@@ -173,12 +195,12 @@ def getUi(data,cmd_run):
                 return False
     hashItem = HashItem()
     
-    for i in range(len(mod_list)):
+    for i in range(len(mod_list2)):
         file_temp = widgets.HTML(
-            value="下载 " + mod_list[i]["name"],
+            value="下载 " + mod_list2[i]["name"],
         )
 
-        if hashItem.find(mod_list[i]["pos"],mod_list[i]["hash"]):
+        if hashItem.find(mod_list2[i]["urls"][0]['pos'],mod_list2[i]["hash"]):
             file_temp_download_buttom = widgets.Button(
                 description='已安装',
                 disabled=False,
