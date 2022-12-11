@@ -1,6 +1,7 @@
 import ipywidgets as widgets
 from ipywidgets import Layout,Label, HBox, VBox
 import os
+import sys
 import time
 import subprocess
 
@@ -211,10 +212,11 @@ def getUi(data,cmd_run):
             else:
                 pic_ext = ""
         
+            python_local = sys.executable
             if run_style_set.value == 1:
-                ThreadOut.run_thread_out(r"cd " + sd_dir + " && python -u launch.py " + safe + " --port=6006 " + deepd + xf + speed + extension + pic_ext,out)
+                ThreadOut.run_thread_out(r"cd " + sd_dir + " && " + python_local + " -u launch.py " + safe + " --port=6006 " + deepd + xf + speed + extension + pic_ext,out)
             else:
-                cmd_run(r"cd " + sd_dir + " && python launch.py " + safe + " --port=6006 " + deepd + xf + speed + extension + pic_ext)
+                cmd_run(r"cd " + sd_dir + " && " + python_local + " launch.py " + safe + " --port=6006 " + deepd + xf + speed + extension + pic_ext)
             
             # bash("cd " + sd_dir + " && python launch.py " + safe + " --port=6006 " + deepd + xf + speed)
             # bash("ping baidu.com")

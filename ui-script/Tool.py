@@ -28,6 +28,7 @@ def getUi(data,cmd_run):
         with out:
             cmd_run("du -sh /root/miniconda3/pkgs/ && rm -rf /root/miniconda3/pkgs/*")
             cmd_run("du -sh /root/.local/share/Trash && rm -rf /root/.local/share/Trash")
+            cmd_run("rm -rf ~/.cache/pip")
             cmd_run("echo 清理完成!")
 
     def del_xformers_buttom_click(self):
