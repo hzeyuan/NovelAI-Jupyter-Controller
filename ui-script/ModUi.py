@@ -82,7 +82,7 @@ mod_list2 = [
         {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/embeddings/yaguru%20magiku.pt',"pos":1},
         {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/hypernetworks/Yaguru_Magiku.pt',"pos":2}
     ],
-    "hash":''
+    "hash":'42da2d52'
 }
 ]
 
@@ -115,6 +115,7 @@ def getUi(data,cmd_run):
 
     def download(self):
         if Utils.get_have_aria2() == False:
+            out.clear_output()
             with out:
                 cmd_run("cd /root/autodl-tmp/ && apt-get update && apt-get install aria2 -y && echo 安装完成")
                 install_download.description='已成功安装下载器'
@@ -123,6 +124,46 @@ def getUi(data,cmd_run):
             out.clear_output()
         
     install_download.on_click(download)
+    
+    # ====================
+    
+    move_button = None
+    if os.path.exists("/root/stable-diffusion-webui") == True:
+        move_button = widgets.Button(
+            description='点我移动到数据盘',
+            disabled=False,
+            button_style='info', # 'success', 'info', 'warning', 'danger' or '',
+            layout=Layout(width='auto', height='auto'),
+            icon='download'
+        )
+    else:
+        move_button = widgets.Button(
+            description='已移动到数据盘',
+            disabled=False,
+            button_style='success', # 'success', 'info', 'warning', 'danger' or '',
+            layout=Layout(width='auto', height='auto'),
+            icon='check'
+        )
+    
+    def move_sd(self):
+        if os.path.exists("/root/stable-diffusion-webui") == True:
+            out.clear_output()
+            with out:
+                print("正在移动...请不要做任何其它操作!!!")
+                cmd_run("mv /root/stable-diffusion-webui /root/autodl-tmp/")
+                move_button.description='已移动到数据盘'
+                move_button.button_style='success'
+                move_button.icon='check'
+                print("移动完成")
+        else:
+            out.clear_output()
+            with out:
+                move_button.description='已移动到数据盘'
+                move_button.button_style='success'
+                move_button.icon='check'
+                print("已在数据盘")
+            
+    move_button.on_click(move_sd)
     
     # ====================
     
@@ -240,7 +281,7 @@ def getUi(data,cmd_run):
     accordion.set_title(1, '内置模型下载')
     accordion.selected_index = None
 
-    line1 = HBox([install_download])
+    line1 = HBox([install_download,move_button])
     box = VBox([mod_tip,line1,accordion,out])
 
     return box

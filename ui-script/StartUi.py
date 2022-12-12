@@ -51,11 +51,11 @@ def getUi(data,cmd_run):
     # ======================
     
     run_stylet_tip = widgets.HTML(
-        value="<font size='2' color='red'>注意：后台版无法查看各类进度输出，导致你会怀疑程序卡住，同时会影响相关数据的查看 | 正常版运行后无法执行下载模型等操作，点击后不会有反应</font>",
+        value="<font size='2' color='red'><p>注意：</p><p>后台版无法查看各类进度输出，导致你会怀疑程序卡住，同时会影响相关数据的查看 </p><p> 正常版运行后无法执行下载模型等操作，点击后不会有反应 </p><p> 自定义版运需要手动在控制台运行(包括学术加速)，但可以同时操作启动器的功能且关闭网页后再打开也能在控制台看到输出</p></font>",
     )
     
     run_style_set = widgets.RadioButtons(
-            options=[('后台版(运行后你可以在其它窗口正常执行下载模型等功能)[时间长后会导致卡顿]',1), ('正常版(运行后你无法在其它窗口正常执行下载模型等功能)',2)],
+            options=[('后台版(运行后你可以在其它窗口正常执行下载模型等功能)[时间长后会导致卡顿]',1), ('正常版(运行后你无法在其它窗口正常执行下载模型等功能)',2), ('自定义版(你需要复制下方的命令并在控制窗口手动运行)',3)],
             value=2, # Defaults to 'pineapple'
             style={'description_width': 'initial'},
             layout=Layout(width='100%', height='50px'),
@@ -213,10 +213,18 @@ def getUi(data,cmd_run):
                 pic_ext = ""
         
             python_local = sys.executable
+            command_content = r"cd " + sd_dir + " && " + python_local + " launch.py " + safe + " --port=6006 " + deepd + xf + speed + extension + pic_ext
             if run_style_set.value == 1:
                 ThreadOut.run_thread_out(r"cd " + sd_dir + " && " + python_local + " -u launch.py " + safe + " --port=6006 " + deepd + xf + speed + extension + pic_ext,out)
+            elif run_style_set.value == 2:
+                cmd_run(command_content)
             else:
-                cmd_run(r"cd " + sd_dir + " && " + python_local + " launch.py " + safe + " --port=6006 " + deepd + xf + speed + extension + pic_ext)
+                print("请复制下方命令到控制台中手动运行")
+                print("")
+                print(command_content)
+                print("")
+                if data["is_speed"] == True:
+                    print("如果需要学术加速打开右侧网址，找到对应加速命令即可：https://www.autodl.com/docs/network_turbo/")
             
             # bash("cd " + sd_dir + " && python launch.py " + safe + " --port=6006 " + deepd + xf + speed)
             # bash("ping baidu.com")
