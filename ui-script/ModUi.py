@@ -115,6 +115,8 @@ def getUi(data,cmd_run):
 
     def download(self):
         if Utils.get_have_aria2() == False:
+            install_download.description='正在安装...'
+            install_download.button_style='warning'
             out.clear_output()
             with out:
                 cmd_run("cd /root/autodl-tmp/ && apt-get update && apt-get install aria2 -y && echo 安装完成")
@@ -147,6 +149,8 @@ def getUi(data,cmd_run):
     
     def move_sd(self):
         if os.path.exists("/root/stable-diffusion-webui") == True:
+            move_button.description='正在移动...'
+            move_button.button_style='warning'
             out.clear_output()
             with out:
                 print("正在移动...请不要做任何其它操作!!!")
