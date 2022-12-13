@@ -138,7 +138,7 @@ def getUi(data,cmd_run):
                     btn = widgets.Button(description = extension['name'], button_style='warning',layout=Layout(width='400px', height='auto')) 
 
                 # 给按钮绑定一个事件处理函数，当点击该按钮时，调用update_extension函数进行更新    
-                btn.on_click(lambda btn: update_extension(btn.description))
+                btn.on_click(lambda btn: update_extension(btn.description,btn))
                 button_list.append(btn)# 将创建的按钮对象存储到button列表中  
             else: 
                 # 否则创建一个绿色的按钮    
