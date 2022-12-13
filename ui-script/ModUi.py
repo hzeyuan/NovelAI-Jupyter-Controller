@@ -10,7 +10,8 @@ mod_list2 = [
     "urls":[
         {"url":"magnet:?xt=urn:btih:2daef5b5f63a16a9af9169a529b1a773fc452637&dn=v1-5-pruned-emaonly.ckpt&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2f9.rarbg.com%3a2810%2fannounce&tr=udp%3a%2f%2ftracker.openbittorrent.com%3a6969%2fannounce&tr=udp%3a%2f%2fopentracker.i2p.rocks%3a6969%2fannounce&tr=https%3a%2f%2fopentracker.i2p.rocks%3a443%2fannounce&tr=http%3a%2f%2ftracker.openbittorrent.com%3a80%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce&tr=udp%3a%2f%2fopen.stealth.si%3a80%2fannounce&tr=udp%3a%2f%2fvibe.sleepyinternetfun.xyz%3a1738%2fannounce&tr=udp%3a%2f%2ftracker2.dler.org%3a80%2fannounce&tr=udp%3a%2f%2ftracker1.bt.moack.co.kr%3a80%2fannounce&tr=udp%3a%2f%2ftracker.zemoj.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.tiny-vps.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.theoks.net%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.publictracker.xyz%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.monitorit4.me%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.moeking.me%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.lelux.fi%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.dler.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.army%3a6969%2fannounce","pos":3}
     ],
-    "hash":'81761151'
+    "hash":'81761151',
+    "mod_class":0,
 },
 {
     "name":"Anything v3.0 (极速)",
@@ -18,28 +19,32 @@ mod_list2 = [
         {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/Anything-V3.0.ckpt',"pos":3},
         {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/Anything-V3.0.vae.pt',"pos":3}
     ],
-    "hash":'1a7df6b8'
+    "hash":'1a7df6b8',
+    "mod_class":0,
 },
 {
     "name":"momoko_e (极速)",
     "urls":[
         {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/momoko-e.ckpt',"pos":3}
     ],
-    "hash":'a2a802b2'
+    "hash":'a2a802b2',
+    "mod_class":0,
 },
 {
     "name":"NovelAI-7G (极速)",
     "urls":[
         {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/NovelAI-7G.ckpt',"pos":3}
     ],
-    "hash":'e6e8e1fc'
+    "hash":'e6e8e1fc',
+    "mod_class":0,
 },
 {
     "name":"MakotoNiitsu-1.1-xhc [新海诚画风] 推荐：DDIM采样器生成 (极速)",
     "urls":[
         {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/xhc.ckpt',"pos":3}
     ],
-    "hash":'33044c56'
+    "hash":'33044c56',
+    "mod_class":1,
 },
 {
     "name":"768-v-ema [SD2.0] [记得更新webui到最新版本在安装！！！] (极速)",
@@ -47,21 +52,24 @@ mod_list2 = [
         {"url":'https://huggingface.co/stabilityai/stable-diffusion-2/resolve/main/768-v-ema.ckpt',"pos":3},
         {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/768-v-ema.yaml',"pos":3}
     ],
-    "hash":'2c02b20a'
+    "hash":'2c02b20a',
+    "mod_class":0,
 },
 {
     "name":"moDi-v1-pruned [迪士尼画风] 关键词:[modern disney style] (极速)",
     "urls":[
         {"url":'https://huggingface.co/nitrosocke/mo-di-diffusion/resolve/main/moDi-v1-pruned.ckpt',"pos":3}
     ],
-    "hash":'ccf3615f'
+    "hash":'ccf3615f',
+    "mod_class":1,
 },
 {
     "name":"redshift-diffusion-v1 [3D现实风格] 关键词:[redshift style] (极速)",
     "urls":[
         {"url":'https://huggingface.co/nitrosocke/redshift-diffusion/resolve/main/redshift-diffusion-v1.ckpt',"pos":3}
     ],
-    "hash":'74f4c61c'
+    "hash":'74f4c61c',
+    "mod_class":1,
 },
 {
     "name":"gamecg [动漫CG人物类画风模型] (极速)",
@@ -69,7 +77,8 @@ mod_list2 = [
         {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/gamecg_9702.ckpt',"pos":3},
         {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/gamecg_9702.vae.pt',"pos":3}
     ],
-    "hash":'a72f551b'
+    "hash":'a72f551b',
+    "mod_class":1,
 },
 {
     "name":"矢车菊V4 [组合模型] (极速)",
@@ -82,8 +91,14 @@ mod_list2 = [
         {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/embeddings/yaguru%20magiku.pt',"pos":1},
         {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/hypernetworks/Yaguru_Magiku.pt',"pos":2}
     ],
-    "hash":'42da2d52'
+    "hash":'42da2d52',
+    "mod_class":1,
 }
+]
+
+class_list = [
+{"title":"主流模型","mods":[]},
+{"title":"推荐模型","mods":[]}
 ]
 
 def getUi(data,cmd_run):
@@ -262,21 +277,37 @@ def getUi(data,cmd_run):
         file_temp_download_buttom.on_click(clickItem.click)
 
         temp_box = HBox([file_temp, file_temp_download_buttom])
-        items.append(temp_box)
+        class_list[mod_list2[i]["mod_class"]].get('mods').append(temp_box)
+        # items.append(temp_box)
         
     xformers_tip = widgets.HTML(
         value="<font size='2' color='red'>TIP:如果极速版下载慢，请打开学术加速</font>",
     )
-        
-    grid = GridBox(children=items,
-        layout=Layout(
-            width='100%',
-            grid_template_columns='auto auto',
-            grid_template_rows='auto auto',
-            grid_gap='5px 10px')
-       )
     
-    other_url = VBox([xformers_tip,grid])
+    # ====================
+    
+    boxs = [xformers_tip]
+    for item in class_list:
+        mod_line = widgets.HTML(
+            value="<hr>",
+        )
+
+        mod_title = widgets.HTML(
+            value="<h4 style='color:blue'>"+item.get('title')+"</h4>",
+        )
+
+        grid = GridBox(children=item.get('mods'),
+            layout=Layout(
+                width='100%',
+                grid_template_columns='auto auto',
+                grid_template_rows='auto auto',
+                grid_gap='5px 10px')
+           )
+        boxs.append(mod_line)
+        boxs.append(mod_title)
+        boxs.append(grid)
+    
+    other_url = VBox(boxs)
     
     # ====================
     
