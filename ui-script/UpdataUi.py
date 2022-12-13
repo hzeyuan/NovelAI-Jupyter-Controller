@@ -116,10 +116,11 @@ def getUi(data,cmd_run):
         
 
     # 更新插件，返回布尔值，True表示更新成功，False表示更新失败
-    def update_extension(extension): 
+    def update_extension(extension,btn): 
         out.clear_output()
         with out:
             cmd_run("echo 正在更新，请稍等... && " + "cd " + get_path_by_name(extension) + " && git pull" + " && echo 更新完成!")
+            btn.button_style='success'
 
     # 获取扫描到的所有插件列表    
     extension_list = scan_extension_dir() 
@@ -145,7 +146,7 @@ def getUi(data,cmd_run):
                     btn = widgets.Button(description = extension['chinese_name'], button_style='success',layout=Layout(width='400px', height='auto'))
                 else:
                     btn = widgets.Button(description = extension['name'], button_style='success',layout=Layout(width='400px', height='auto'))
-                btn.on_click(lambda btn: update_extension(btn.description))
+                btn.on_click(lambda btn: update_extension(btn.description,btn))
                 button_list.append(btn)# 将创建的按钮对象存储到button列表中  
         # 显示button列表中的所有按钮
         box_.children = [updata_tip,updata_controller_buttom,updata_webui_buttom,updata_scan,updata_line,VBox(button_list),out]
