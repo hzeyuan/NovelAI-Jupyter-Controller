@@ -90,7 +90,7 @@ def getUi(data,cmd_run):
     out = widgets.Output(layout={'border': '1px solid black'})
     
     mod_tip = widgets.HTML(
-        value="<font size='2' color='red'>下载前记得安装下载器，安装前记得开启学术加速</font>",
+        value="<font size='2' color='red'>下载前记得安装下载器,开启学术加速,强烈建议移动到数据盘(系统盘的空间不够下载模型)</font>",
     )
     
     install_download = None
