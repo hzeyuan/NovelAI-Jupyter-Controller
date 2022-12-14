@@ -141,6 +141,7 @@ def getUi(data,cmd_run):
         value=False,
         description='安全模式启动(用于文件损坏时勾选，启动前会清除下载缓存)',
         disabled=False,
+        layout=Layout(width='auto', height='auto'),
         indent=False
     )
     
