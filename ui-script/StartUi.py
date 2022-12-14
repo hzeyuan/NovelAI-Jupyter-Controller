@@ -137,6 +137,21 @@ def getUi(data,cmd_run):
     
     # -------
     
+    security = widgets.Checkbox(
+        value=False,
+        description='安全模式启动(用于文件损坏时勾选，启动前会清除下载缓存)',
+        disabled=False,
+        indent=False
+    )
+    
+    security_tip = widgets.HTML(
+        value="<font size='2' color='red'>勾选后会在启动前清除下载缓存</font>",
+    )
+    
+    security_box = HBox([security, security_tip])
+    
+    # -------
+    
     run_buttom = widgets.Button(
             description='运行WebUi',
             button_style='success'
@@ -212,6 +227,9 @@ def getUi(data,cmd_run):
             else:
                 pic_ext = ""
         
+            if security.value == True:
+                cmd_run(r"echo 正在清理下载缓存 && rm -rf /root/.cache/huggingface/ && echo 清理完成")
+        
             python_local = sys.executable
             command_content = r"cd " + sd_dir + " && " + python_local + " launch.py " + safe + " --port=6006 " + deepd + xf + speed + extension + pic_ext
             if run_style_set.value == 1:
@@ -241,5 +259,5 @@ def getUi(data,cmd_run):
         auth_set_tip,name_input,pass_input,
         position_set_tip,position_set,
         run_stylet_tip,run_style_set,
-        info,deepdanbooru,xformers_box,disable_box,insecure_extension_access_box,picture_extension_box,run_buttom,out
+        info,deepdanbooru,xformers_box,disable_box,insecure_extension_access_box,picture_extension_box,security_box,run_buttom,out
     ])
