@@ -127,6 +127,7 @@ def getUi(data,cmd_run):
     def scan_run(self):
         self.description = "正在扫描...(如时间过长请检查学术加速是否打开)"
         self.button_style = "warning"
+        extension_list = scan_extension_dir()
         button_list = [] # 创建一个空的button列表，用于存储按钮对象    
         for extension in extension_list: 
             # 判断当前插件是否需要更新    
