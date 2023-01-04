@@ -27,7 +27,9 @@ def getUi(data,cmd_run):
     )
     
     updata_webui_buttom = widgets.Button(
-            description='更新WebUi',
+            description='更新WebUi(注意这是强制覆盖)',
+            style={'description_width': 'initial'},
+            layout=Layout(width='300px', height='auto'),
             button_style='success'
     )
     
@@ -59,7 +61,7 @@ def getUi(data,cmd_run):
                 if index == 0:
                     cmd_run(head + "cd /root/NovelAI-Jupyter-Controller && git fetch --all && git reset --hard origin && git pull" + tail + " && echo 请重启所有内核并关闭所有窗口重新打开")
                 if index == 1:
-                    cmd_run(head + "cd " + sd_dir + " && git pull" + tail)
+                    cmd_run(head + "cd " + sd_dir + " && git fetch --all && git reset --hard origin && git pull" + tail)
     
     def updata_controller_buttom_(self):
         run_click(0)   
