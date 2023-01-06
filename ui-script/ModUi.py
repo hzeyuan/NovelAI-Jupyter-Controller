@@ -39,6 +39,15 @@ mod_list2 = [
     "mod_class":0,
 },
 {
+    "name":"Stable Diffusion v2.1 768-ema [记得更新webui到最新版本在安装！！！] (极速)",
+    "urls":[
+        {"url":'https://huggingface.co/stabilityai/stable-diffusion-2-1/resolve/main/v2-1_768-ema-pruned.ckpt',"pos":3},
+        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/v2-1_768-ema-pruned.yaml',"pos":3}
+    ],
+    "hash":'4bdfc29c',
+    "mod_class":0,
+},
+{
     "name":"MakotoNiitsu-1.1-xhc [新海诚画风] 推荐：DDIM采样器生成 (极速)",
     "urls":[
         {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/xhc.ckpt',"pos":3}
@@ -47,7 +56,7 @@ mod_list2 = [
     "mod_class":1,
 },
 {
-    "name":"768-v-ema [SD2.0] [记得更新webui到最新版本在安装！！！] (极速)",
+    "name":"Stable Diffusion v2.0 768-v-ema [记得更新webui到最新版本在安装！！！] (极速)",
     "urls":[
         {"url":'https://huggingface.co/stabilityai/stable-diffusion-2/resolve/main/768-v-ema.ckpt',"pos":3},
         {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/768-v-ema.yaml',"pos":3}
