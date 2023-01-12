@@ -14,13 +14,13 @@ def getUi(data,cmd_run):
     clear_buttom = widgets.Button(
             description='清理系统盘',
             style={'description_width': 'initial'},
-            layout=Layout(width='300px', height='auto'),
+            layout=Layout(width='300px', height='35px'),
             button_style='primary'
     )
     
     del_xformers_buttom = widgets.Button(
             description='删除xformers(非xformers报错请勿执行它!)',
-            layout=Layout(width='300px', height='auto'),
+            layout=Layout(width='300px', height='35px'),
             button_style='primary'
     )
 
@@ -40,4 +40,30 @@ def getUi(data,cmd_run):
     clear_buttom.on_click(clear_buttom_click)
     del_xformers_buttom.on_click(del_xformers_buttom_click)
     
-    return VBox([tool_tip,clear_buttom,del_xformers_buttom,out])
+    #===========
+    
+    extensions_input = widgets.Text(
+        value='',
+        placeholder='请输入扩展插件的git链接(例如：https://github.com/Akegarasu/sd-webui-model-converter.git)',
+        style={'description_width': 'initial'},
+        layout=Layout(width='1000px', height='35px'),
+        description='扩展插件git链接(安装完毕后记得重启webui):',
+        disabled=False
+    )
+    
+    extensions_buttom = widgets.Button(
+            description='点击安装',
+            style={'description_width': 'initial'},
+            layout=Layout(width='400px', height='35px'),
+            button_style='success'
+    )
+    
+    def extensions_buttom_click(self):
+        sd_dir = Utils.get_sd_dir()
+        ext_dir = sd_dir + '/extensions'
+        with out:
+            cmd_run("echo 请稍等，正在安装! && cd " + ext_dir + " && git clone " + extensions_input.value + " && echo 插件已安装在" + ext_dir + " && echo 安装完成!")
+    
+    extensions_buttom.on_click(extensions_buttom_click)
+    
+    return VBox([tool_tip,clear_buttom,del_xformers_buttom,extensions_input,extensions_buttom,out])
