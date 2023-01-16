@@ -23,6 +23,14 @@ mod_list2 = [
     "mod_class":0,
 },
 {
+    "name":"ACertainThing (极速)",
+    "urls":[
+        {"url":'https://huggingface.co/JosephusCheung/ACertainThing/resolve/main/ACertainThing.ckpt',"pos":3}
+    ],
+    "hash":'26f53cad',
+    "mod_class":0,
+},
+{
     "name":"momoko_e (极速)",
     "urls":[
         {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/momoko-e.ckpt',"pos":3}
