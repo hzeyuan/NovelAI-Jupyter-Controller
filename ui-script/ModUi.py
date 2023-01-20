@@ -328,9 +328,22 @@ def getUi(data,cmd_run):
     
     # ====================
     
-    accordion = widgets.Accordion(children=[my_url, other_url])
+    cdg_ = widgets.HTML(
+        value="<font size='4px' color='#0fa3ff'><a target='_blank' href='https://docs.qq.com/doc/DY0lFeWZuVXRCdUJU'>1.藏丹阁</a></font><br>",
+    )
+    
+    web_123114514 = widgets.HTML(
+        value="<font size='4px' color='#0fa3ff'><a target='_blank' href='http://www.123114514.xyz/models'>2.123114514模型站</a></font>",
+    )
+    
+    website_url = VBox([cdg_,web_123114514])
+    
+    # ====================
+    
+    accordion = widgets.Accordion(children=[my_url, other_url,website_url])
     accordion.set_title(0, '自定义链接下载')
     accordion.set_title(1, '内置模型下载')
+    accordion.set_title(2, '模型网站')
     accordion.selected_index = None
 
     line1 = HBox([install_download,move_button])

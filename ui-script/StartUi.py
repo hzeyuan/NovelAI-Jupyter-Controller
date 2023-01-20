@@ -10,14 +10,17 @@ import Utils,ThreadOut
 def getUi(data,cmd_run):
     out = widgets.Output(layout={'border': '1px solid black'})
     
-    start_tip = widgets.HTML(
-        value="<p>启动完毕后通过自定义服务打开网站</p><p><font color='#0fa3ff'><a href='https://www.autodl.com/console/instance/list' target='_blank'>点击此处打开服务器列表</a><font/></p><p></p>",
+    line = widgets.HTML(
+        value="<hr>",
+    )
+    white_line = widgets.HTML(
+        value="<br>",
     )
     
     # ======================
     
     auth_set_tip = widgets.HTML(
-        value="<font size='2' color='red'>为了保证完全，下方设置的用户信息将会在启动share的时候自动设置</font>",
+        value="<font size='2' color='red'>TIP:为了保证完全，下方设置的用户信息将会在开启加速的时候自动设置</font>",
     )
     
     name_input = widgets.Text(
@@ -36,7 +39,7 @@ def getUi(data,cmd_run):
     # ======================
     
     position_set_tip = widgets.HTML(
-        value="<font size='2' color='red'>推荐在训练的时候选择数据盘，更节约空间。请勿频繁切换，切换至数据盘后尽量别再切换为系统盘，以免空间不足造成移动时失败!</font>",
+        value="<font size='2' color='red'>TIP:推荐在训练的时候选择数据盘，更节约空间。请勿频繁切换，切换至数据盘后尽量别再切换为系统盘，以免空间不足造成移动时失败!</font>",
     )
     
     position_set = widgets.RadioButtons(
@@ -51,11 +54,11 @@ def getUi(data,cmd_run):
     # ======================
     
     run_stylet_tip = widgets.HTML(
-        value="<font size='2' color='red'><p>注意：</p><p>后台版无法查看各类进度输出，导致你会怀疑程序卡住，同时会影响相关数据的查看 </p><p> 正常版运行后无法执行下载模型等操作，点击后不会有反应 </p><p> 自定义版运需要手动在控制台运行(包括学术加速)，但可以同时操作启动器的功能且关闭网页后再打开也能在控制台看到输出</p></font>",
+        value="<font size='2' color='red'><p>TIP：</p><p>后台版(多线程)：无法查看各类进度输出,导致你会怀疑程序卡住,同时运行时间长后会导致卡顿</p><p>正常版(单线程)：运行后无法执行下载模型等操作(点击后不会有反应),需要取消运行后才能进行操作</p><p>自定义版：运需要手动在控制台运行(包括学术加速)，但可以同时操作启动器的功能且关闭网页后再打开也能在控制台看到输出</p></font>",
     )
     
     run_style_set = widgets.RadioButtons(
-            options=[('后台版(运行后你可以在其它窗口正常执行下载模型等功能)[时间长后会导致卡顿]',1), ('正常版(运行后你无法在其它窗口正常执行下载模型等功能)',2), ('自定义版(你需要复制下方的命令并在控制窗口手动运行)',3)],
+            options=[('后台版',1), ('正常版',2), ('自定义版',3)],
             value=2, # Defaults to 'pineapple'
             style={'description_width': 'initial'},
             layout=Layout(width='100%', height='50px'),
@@ -69,7 +72,7 @@ def getUi(data,cmd_run):
     
     deepdanbooru = widgets.Checkbox(
         value=False,
-        description='deepdanbooru(图片反推文本)',
+        description='图片反推文本 [--deepdanbooru]',
         disabled=False,
         indent=False
     )
@@ -78,14 +81,14 @@ def getUi(data,cmd_run):
     
     xformers = widgets.Checkbox(
         value=False,
-        description='xformers(极大改善内存消耗和速度)',
+        description='xformers极大改善内存消耗和速度 [--xformers]',
         disabled=False,
         layout=Layout(width='auto', height='auto'),
         indent=False
     )
     
     xformers_tip = widgets.HTML(
-        value="<font size='2' color='red'>请勿在训练DreamBooth的时候打开它!</font>",
+        value="<font size='2' color='red'>请勿在训练DreamBooth的时候打开它 [2.0整合版可以开启]</font>",
     )
     
     xformers_box = HBox([xformers, xformers_tip])
@@ -94,13 +97,14 @@ def getUi(data,cmd_run):
     
     disable_safe = widgets.Checkbox(
         value=True,
-        description='disable-safe-unpickle(是否不启动安全检查)',
+        description='不启动安全检查 [--disable-safe-unpickle]',
+        layout=Layout(width='auto', height='auto'),
         disabled=False,
         indent=False
     )
     
     disable_tip = widgets.HTML(
-        value="<font size='2' color='red'>取消勾选可能导致启动报错</font>",
+        value="<font size='2' color='red'>取消勾选可能导致模型加载时报错</font>",
     )
     
     disable_box = HBox([disable_safe, disable_tip])
@@ -109,13 +113,14 @@ def getUi(data,cmd_run):
     
     insecure_extension_access = widgets.Checkbox(
         value=False,
-        description='extension-access(启用不安全的扩展访问)',
+        description='允许WebUi使用安装扩展功能 [--enable-insecure-extension-access]',
+        layout=Layout(width='auto', height='auto'),
         disabled=False,
         indent=False
     )
     
     insecure_extension_access_tip = widgets.HTML(
-        value="<font size='2' color='blue'>勾选后将允许在webui扩展中安装任意扩展 </font><font size='2' color='red'>(注意安装后点重启并应用会报错，记得自行重启)</font>",
+        value="<font size='2' color='blue'>勾选后将允许在webui扩展中安装任意扩展 </font><font size='2' color='red'>(注意安装插件后点重启并应用会报错，记得自行重启)</font>",
     )
     
     insecure_extension_access_box = HBox([insecure_extension_access, insecure_extension_access_tip])
@@ -124,7 +129,8 @@ def getUi(data,cmd_run):
     
     picture_extension = widgets.Checkbox(
         value=False,
-        description='Api+扩图允许(启用Api访问，并允许扩图访问)',
+        description='Api+扩图允许(启用Api访问，并允许扩图访问) [--api --cors-allow-origins]',
+        layout=Layout(width='auto', height='auto'),
         disabled=False,
         indent=False
     )
@@ -153,10 +159,41 @@ def getUi(data,cmd_run):
     
     # -------
     
+    warning = widgets.Checkbox(
+        value=True,
+        description='关闭tensorflow警告',
+        disabled=False,
+        layout=Layout(width='auto', height='auto'),
+        indent=False
+    )
+    
+    warning_tip = widgets.HTML(
+        value="<font size='2' color='red'>勾选后不会在启动出现警告信息</font>",
+    )
+    
+    warning_box = HBox([warning, warning_tip])
+    
+    # ======================
+    
     run_buttom = widgets.Button(
             description='运行WebUi',
             button_style='success'
     )
+    
+    # ======================
+    
+    start_tip = widgets.HTML(
+        value="<p>启动完毕后通过自定义服务打开网站</p><p><font color='#0fa3ff'><a href='https://www.autodl.com/console/instance/list' target='_blank'>点击此处打开服务器列表</a><font/></p><p></p>",
+    )
+    
+    file = open("/root/NovelAI-Jupyter-Controller/ui-script/自定义服务.png", "rb")
+    image = file.read()
+    start_tip_img = widgets.Image(
+        value=image,
+        format='png'
+    )
+    
+    # ======================
 
     #运行函数
     def run_click(self):
@@ -230,6 +267,11 @@ def getUi(data,cmd_run):
         
             if security.value == True:
                 cmd_run(r"echo 正在清理下载缓存 && rm -rf /root/.cache/huggingface/ && echo 清理完成")
+            
+            if warning.value == True:
+                os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
+            else:
+                os.environ['TF_CPP_MIN_LOG_LEVEL']='0'
         
             python_local = sys.executable
             command_content = r"cd " + sd_dir + " && " + python_local + " launch.py " + safe + " --port=6006 " + deepd + xf + speed + extension + pic_ext
@@ -256,9 +298,16 @@ def getUi(data,cmd_run):
     run_buttom.on_click(run_click)
     
     return VBox([
-        start_tip,
         auth_set_tip,name_input,pass_input,
+        line,
         position_set_tip,position_set,
+        line,
         run_stylet_tip,run_style_set,
-        info,deepdanbooru,xformers_box,disable_box,insecure_extension_access_box,picture_extension_box,security_box,run_buttom,out
+        white_line,line,
+        info,
+        deepdanbooru,xformers_box,disable_box,insecure_extension_access_box,picture_extension_box,security_box,warning_box,
+        line,
+        run_buttom,
+        start_tip,start_tip_img,
+        out
     ])
