@@ -31,6 +31,14 @@ mod_list2 = [
     "mod_class":0,
 },
 {
+    "name":"basil_mix [2.5D人物模型] (极速)",
+    "urls":[
+        {"url":'https://huggingface.co/nuigurumi/basil_mix/resolve/main/Basil_mix_fixed.safetensors',"pos":3}
+    ],
+    "hash":'0ff127093f',
+    "mod_class":0,
+},
+{
     "name":"momoko_e (极速)",
     "urls":[
         {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/momoko-e.ckpt',"pos":3}
