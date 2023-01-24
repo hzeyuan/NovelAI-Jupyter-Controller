@@ -101,6 +101,8 @@ def get_style_mod_dir(style):
 def scan_dir_hash(style):
     mod_dir = get_style_mod_dir(style)
     hash_list = []
+    if os.path.exists(mod_dir) == False:
+        os.makedirs(mod_dir)
     for file_name in os.listdir(mod_dir):
         file_dir = mod_dir + "/" + file_name
         if os.path.isfile(file_dir):
