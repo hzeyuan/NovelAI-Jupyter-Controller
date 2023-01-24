@@ -117,6 +117,12 @@ def getUi(data,cmd_run):
             button_style='primary'
     )
     
+    git_speed_buttom = widgets.Button(
+            description='启动Git加速(非AutoDL官方)',
+            layout=Layout(width='300px', height='auto'),
+            button_style='primary'
+    )
+    
     del_xformers_buttom = widgets.Button(
             description='删除xformers(非xformers报错请勿执行它!)',
             layout=Layout(width='300px', height='auto'),
@@ -130,6 +136,12 @@ def getUi(data,cmd_run):
             cmd_run("du -sh /root/.local/share/Trash && rm -rf /root/.local/share/Trash")
             cmd_run("rm -rf ~/.cache/pip")
             cmd_run("echo 清理完成!")
+            
+    def git_speed_buttom_click(self):
+        out.clear_output()
+        with out:
+            cmd_run("git config --global url.'https://gitclone.com/'.insteadOf https://")
+            cmd_run("echo 已加速!快去试试吧!")
 
     def del_xformers_buttom_click(self):
         out.clear_output()
@@ -139,6 +151,7 @@ def getUi(data,cmd_run):
     
     #绑定加速函数
     clear_buttom.on_click(clear_buttom_click)
+    git_speed_buttom.on_click(git_speed_buttom_click)
     del_xformers_buttom.on_click(del_xformers_buttom_click)
     
     #===========
@@ -150,6 +163,6 @@ def getUi(data,cmd_run):
         line,
         del_tool_box,
         line,
-        other_tool_tip,clear_buttom,del_xformers_buttom,
+        other_tool_tip,clear_buttom,git_speed_buttom,del_xformers_buttom,
         out
     ])
