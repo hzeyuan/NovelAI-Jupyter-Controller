@@ -57,10 +57,10 @@ def get_download_dir(style):
     else:
         return "-1"
         
-def get_download_command(url,style):
+def get_download_command(url,style,file_name):
     download_dir = get_download_dir(style)
     if download_dir != "-1":
-        command = "cd " + download_dir + " && aria2c -s 16 -x 8 --seed-time=0 '" + url + "' && echo 下载完毕!文件已保存到" + download_dir
+        command = "cd " + download_dir + " && aria2c -s 16 -x 8 --seed-time=0 '" + url + "' -o " + file_name + " && echo 下载完毕!文件已保存到" + download_dir
         return command
     else:
         return "echo 未找到目录!无法下载!"

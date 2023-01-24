@@ -8,7 +8,7 @@ mod_list2 = [
 {
     "name":"Stable Diffusion v1.5 (慢)",
     "urls":[
-        {"url":"magnet:?xt=urn:btih:2daef5b5f63a16a9af9169a529b1a773fc452637&dn=v1-5-pruned-emaonly.ckpt&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2f9.rarbg.com%3a2810%2fannounce&tr=udp%3a%2f%2ftracker.openbittorrent.com%3a6969%2fannounce&tr=udp%3a%2f%2fopentracker.i2p.rocks%3a6969%2fannounce&tr=https%3a%2f%2fopentracker.i2p.rocks%3a443%2fannounce&tr=http%3a%2f%2ftracker.openbittorrent.com%3a80%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce&tr=udp%3a%2f%2fopen.stealth.si%3a80%2fannounce&tr=udp%3a%2f%2fvibe.sleepyinternetfun.xyz%3a1738%2fannounce&tr=udp%3a%2f%2ftracker2.dler.org%3a80%2fannounce&tr=udp%3a%2f%2ftracker1.bt.moack.co.kr%3a80%2fannounce&tr=udp%3a%2f%2ftracker.zemoj.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.tiny-vps.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.theoks.net%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.publictracker.xyz%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.monitorit4.me%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.moeking.me%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.lelux.fi%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.dler.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.army%3a6969%2fannounce","pos":3}
+        {"url":"magnet:?xt=urn:btih:2daef5b5f63a16a9af9169a529b1a773fc452637&dn=v1-5-pruned-emaonly.ckpt&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2f9.rarbg.com%3a2810%2fannounce&tr=udp%3a%2f%2ftracker.openbittorrent.com%3a6969%2fannounce&tr=udp%3a%2f%2fopentracker.i2p.rocks%3a6969%2fannounce&tr=https%3a%2f%2fopentracker.i2p.rocks%3a443%2fannounce&tr=http%3a%2f%2ftracker.openbittorrent.com%3a80%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce&tr=udp%3a%2f%2fopen.stealth.si%3a80%2fannounce&tr=udp%3a%2f%2fvibe.sleepyinternetfun.xyz%3a1738%2fannounce&tr=udp%3a%2f%2ftracker2.dler.org%3a80%2fannounce&tr=udp%3a%2f%2ftracker1.bt.moack.co.kr%3a80%2fannounce&tr=udp%3a%2f%2ftracker.zemoj.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.tiny-vps.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.theoks.net%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.publictracker.xyz%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.monitorit4.me%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.moeking.me%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.lelux.fi%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.dler.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.army%3a6969%2fannounce","pos":3,"name":"SD1.5"}
     ],
     "hash":'81761151',
     "mod_class":0,
@@ -16,8 +16,8 @@ mod_list2 = [
 {
     "name":"Anything v3.0 (极速)",
     "urls":[
-        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/Anything-V3.0.ckpt',"pos":3},
-        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/Anything-V3.0.vae.pt',"pos":3}
+        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/Anything-V3.0.ckpt',"pos":3,"name":"Anything-V3.0.ckpt"},
+        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/Anything-V3.0.vae.pt',"pos":3,"name":"Anything-V3.0.vae.pt"}
     ],
     "hash":'1a7df6b8',
     "mod_class":0,
@@ -25,7 +25,7 @@ mod_list2 = [
 {
     "name":"ACertainThing (极速)",
     "urls":[
-        {"url":'https://huggingface.co/JosephusCheung/ACertainThing/resolve/main/ACertainThing.ckpt',"pos":3}
+        {"url":'https://huggingface.co/JosephusCheung/ACertainThing/resolve/main/ACertainThing.ckpt',"pos":3,"name":"ACertainThing.ckpt"}
     ],
     "hash":'26f53cad',
     "mod_class":0,
@@ -33,7 +33,7 @@ mod_list2 = [
 {
     "name":"basil_mix [2.5D人物模型] (极速)",
     "urls":[
-        {"url":'https://huggingface.co/nuigurumi/basil_mix/resolve/main/Basil_mix_fixed.safetensors',"pos":3}
+        {"url":'https://huggingface.co/nuigurumi/basil_mix/resolve/main/Basil_mix_fixed.safetensors',"pos":3,"name":"Basil_mix_fixed.safetensors"}
     ],
     "hash":'0ff127093f',
     "mod_class":0,
@@ -41,7 +41,7 @@ mod_list2 = [
 {
     "name":"momoko_e (极速)",
     "urls":[
-        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/momoko-e.ckpt',"pos":3}
+        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/momoko-e.ckpt',"pos":3,"name":"momoko-e.ckpt"}
     ],
     "hash":'a2a802b2',
     "mod_class":0,
@@ -49,7 +49,7 @@ mod_list2 = [
 {
     "name":"NovelAI-7G (极速)",
     "urls":[
-        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/NovelAI-7G.ckpt',"pos":3}
+        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/NovelAI-7G.ckpt',"pos":3,"name":"NovelAI-7G.ckpt"}
     ],
     "hash":'e6e8e1fc',
     "mod_class":0,
@@ -57,8 +57,8 @@ mod_list2 = [
 {
     "name":"Stable Diffusion v2.1 768-ema [记得更新webui到最新版本在安装！！！] (极速)",
     "urls":[
-        {"url":'https://huggingface.co/stabilityai/stable-diffusion-2-1/resolve/main/v2-1_768-ema-pruned.ckpt',"pos":3},
-        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/v2-1_768-ema-pruned.yaml',"pos":3}
+        {"url":'https://huggingface.co/stabilityai/stable-diffusion-2-1/resolve/main/v2-1_768-ema-pruned.ckpt',"pos":3,"name":"v2-1_768-ema-pruned.ckpt"},
+        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/v2-1_768-ema-pruned.yaml',"pos":3,"name":"v2-1_768-ema-pruned.yaml"}
     ],
     "hash":'4bdfc29c',
     "mod_class":0,
@@ -66,7 +66,7 @@ mod_list2 = [
 {
     "name":"MakotoNiitsu-1.1-xhc [新海诚画风] 推荐：DDIM采样器生成 (极速)",
     "urls":[
-        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/xhc.ckpt',"pos":3}
+        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/xhc.ckpt',"pos":3,"name":"xhc.ckpt"}
     ],
     "hash":'33044c56',
     "mod_class":1,
@@ -74,8 +74,8 @@ mod_list2 = [
 {
     "name":"Stable Diffusion v2.0 768-v-ema [记得更新webui到最新版本在安装！！！] (极速)",
     "urls":[
-        {"url":'https://huggingface.co/stabilityai/stable-diffusion-2/resolve/main/768-v-ema.ckpt',"pos":3},
-        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/768-v-ema.yaml',"pos":3}
+        {"url":'https://huggingface.co/stabilityai/stable-diffusion-2/resolve/main/768-v-ema.ckpt',"pos":3,"name":"768-v-ema.ckpt"},
+        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/768-v-ema.yaml',"pos":3,"name":"768-v-ema.yaml"}
     ],
     "hash":'2c02b20a',
     "mod_class":0,
@@ -83,7 +83,7 @@ mod_list2 = [
 {
     "name":"moDi-v1-pruned [迪士尼画风] 关键词:[modern disney style] (极速)",
     "urls":[
-        {"url":'https://huggingface.co/nitrosocke/mo-di-diffusion/resolve/main/moDi-v1-pruned.ckpt',"pos":3}
+        {"url":'https://huggingface.co/nitrosocke/mo-di-diffusion/resolve/main/moDi-v1-pruned.ckpt',"pos":3,"name":"moDi-v1-pruned.ckpt"}
     ],
     "hash":'ccf3615f',
     "mod_class":1,
@@ -91,7 +91,7 @@ mod_list2 = [
 {
     "name":"redshift-diffusion-v1 [3D现实风格] 关键词:[redshift style] (极速)",
     "urls":[
-        {"url":'https://huggingface.co/nitrosocke/redshift-diffusion/resolve/main/redshift-diffusion-v1.ckpt',"pos":3}
+        {"url":'https://huggingface.co/nitrosocke/redshift-diffusion/resolve/main/redshift-diffusion-v1.ckpt',"pos":3,"name":"redshift-diffusion-v1.ckpt"}
     ],
     "hash":'74f4c61c',
     "mod_class":1,
@@ -99,8 +99,8 @@ mod_list2 = [
 {
     "name":"gamecg [动漫CG人物类画风模型] (极速)",
     "urls":[
-        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/gamecg_9702.ckpt',"pos":3},
-        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/gamecg_9702.vae.pt',"pos":3}
+        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/gamecg_9702.ckpt',"pos":3,"name":"gamecg_9702.ckpt"},
+        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/gamecg_9702.vae.pt',"pos":3,"name":"gamecg_9702.vae.pt"}
     ],
     "hash":'a72f551b',
     "mod_class":1,
@@ -108,13 +108,13 @@ mod_list2 = [
 {
     "name":"矢车菊V4 [组合模型] (极速)",
     "urls":[
-        {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/AnyJrny90.ckpt',"pos":3},
-        {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/embeddings/001glitch-core.pt',"pos":1},
-        {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/embeddings/8sconception.pt',"pos":1},
-        {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/embeddings/anime-background-style-v2.pt',"pos":1},
-        {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/embeddings/dreamcore.pt',"pos":1},
-        {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/embeddings/yaguru%20magiku.pt',"pos":1},
-        {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/hypernetworks/Yaguru_Magiku.pt',"pos":2}
+        {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/AnyJrny90.ckpt',"pos":3,"name":"AnyJrny90.ckpt"},
+        {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/embeddings/001glitch-core.pt',"pos":1,"name":"001glitch-core.pt"},
+        {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/embeddings/8sconception.pt',"pos":1,"name":"8sconception.pt"},
+        {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/embeddings/anime-background-style-v2.pt',"pos":1,"name":"anime-background-style-v2.pt"},
+        {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/embeddings/dreamcore.pt',"pos":1,"name":"dreamcore.pt"},
+        {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/embeddings/yaguru%20magiku.pt',"pos":1,"name":"yaguru%20magiku.pt"},
+        {"url":'https://huggingface.co/Toooajk/YaguruMagiku/resolve/main/YaguruMagiku-v4/hypernetworks/Yaguru_Magiku.pt',"pos":2,"name":"Yaguru_Magiku.pt"}
     ],
     "hash":'42da2d52',
     "mod_class":1,
@@ -254,7 +254,7 @@ def getUi(data,cmd_run):
             # 遍历每个元素的urls列表，调用cmd_run函数处理每个URL和pos值
             for i, url in enumerate(mod_data['urls']):
                 print('正在下载第{}个文件，共{}个'.format(i+1, len(mod_data['urls'])))
-                cmd_run(Utils.get_download_command(url['url'], url['pos']))
+                cmd_run(Utils.get_download_command(url['url'], url['pos'], url['name']))
         def click(self,temp):
             out.clear_output()
             temp.description='正在安装...'
