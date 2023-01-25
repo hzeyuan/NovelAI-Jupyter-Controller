@@ -4,6 +4,8 @@ import hashlib
 import subprocess
 import time
 
+# ======================= 学术加速 =======================
+
 ip_list = {
     '芜湖区':'192.168.0.91',
     '北京A区':'100.72.64.19',
@@ -16,15 +18,18 @@ ip_list = {
     '内蒙B区':'192.168.1.174',
 }
 
+# 获取加速IP
 def get_speed_ip():
     for item in ip_list:
-        print(item)
         if(os.system(f'ping -c 1 -w 1 {ip_list[item]}') == 0):
             return [item,ip_list[item]]
     return '-1'
 
+# 判断是否已加速
 def get_is_speed():
     return os.getenv("http_proxy") != None
+
+# ======================= 下载 =======================
 
 def get_have_aria2():
     return os.system(f'aria2c -v') == 0
@@ -109,9 +114,30 @@ def scan_dir_hash(style):
             hash_list.append(model_hash(file_dir))
     return hash_list
 
+# ======================= 系统 =======================
+
 # 抛出错误
 def exp(error):
     raise ValueError(error)
+
+# ======================= UI =======================
+
+def button_start(btn,tip):
+    btn.description = tip
+    btn.button_style = "warning"
+    btn.icon = "spinner"
+
+def button_yes_end(btn,tip):
+    btn.description = tip
+    btn.button_style = "success"
+    btn.icon = "check"
+    
+def button_no_end(btn,tip):
+    btn.description = tip
+    btn.button_style = "danger"
+    btn.icon = "close"
+
+# ======================= git =======================
 
 # 获取默认分支名字
 def get_main_b_name(path):
