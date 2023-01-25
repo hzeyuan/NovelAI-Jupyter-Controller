@@ -337,7 +337,7 @@ def getUi(data,cmd_run):
     # ====================
     
     cdg_ = widgets.HTML(
-        value="<font size='4px' color='#0fa3ff'><a target='_blank' href='https://docs.qq.com/doc/DY0lFeWZuVXRCdUJU'>1.藏丹阁</a></font><br>",
+        value="<font size='4px' color='#0fa3ff'><a target='_blank' href='https://www.bilibili.com/read/cv21386117'>1.藏丹阁</a></font><br>",
     )
     
     web_123114514 = widgets.HTML(
