@@ -118,7 +118,7 @@ def getUi(data,cmd_run):
     )
     
     git_speed_buttom = widgets.Button(
-            description='启动Git加速(非AutoDL官方)',
+            description='点击删除之前的非AutoDL官方加速，请点击删除有BUG',
             layout=Layout(width='300px', height='auto'),
             button_style='primary'
     )
@@ -140,8 +140,8 @@ def getUi(data,cmd_run):
     def git_speed_buttom_click(self):
         out.clear_output()
         with out:
-            cmd_run("git config --global url.'https://gitclone.com/'.insteadOf https://")
-            cmd_run("echo 已加速!快去试试吧!")
+            cmd_run("git config --global --unset url.'https://gitclone.com/'.insteadOf")
+            cmd_run("echo 已删除自定义加速配置")
 
     def del_xformers_buttom_click(self):
         out.clear_output()
