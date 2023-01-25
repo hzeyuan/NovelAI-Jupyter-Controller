@@ -122,17 +122,20 @@ mod_list2 = [
 ]
 
 class_list = [
-{"title":"主流模型","mods":[]},
-{"title":"推荐模型","mods":[]}
+    {"title":"主流模型","mods":[]},
+    {"title":"推荐模型","mods":[]}
 ]
 
 def getUi(data,cmd_run):
     out = widgets.Output(layout={'border': '1px solid black'})
     
     mod_tip = widgets.HTML(
-        value="<font size='2' color='red'>下载前记得安装下载器,开启学术加速,强烈建议移动到数据盘(系统盘的空间不够下载模型)</font>",
+        value="<font size='2' color='red'>1. 下载前记得安装下载器,开启学术加速</font><br><font size='2' color='red'>2. 强烈建议提前移动到数据盘(系统盘的空间不够下载模型)</font>",
     )
     
+    # ====================
+    
+    # 为了清除判断的输出加了一层，从是否已经安装设置按钮样式
     install_download = None
     with out:
         if Utils.get_have_aria2() == False:
@@ -153,22 +156,21 @@ def getUi(data,cmd_run):
             )
     out.clear_output()
 
-    def download(self):
+    # 安装下载器
+    def install_downloader(self):
         if Utils.get_have_aria2() == False:
-            install_download.description='正在安装...'
-            install_download.button_style='warning'
-            out.clear_output()
+            Utils.button_start(install_download,'正在安装...')
+            out.clear_output() # 清理判断的输出
             with out:
                 cmd_run("cd /root/autodl-tmp/ && apt-get update && apt-get install aria2 -y && echo 安装完成")
-                install_download.description='已成功安装下载器'
-                install_download.button_style='success'
-                install_download.icon='check'
+                Utils.button_yes_end(install_download,'已成功安装下载器')
             out.clear_output()
         
-    install_download.on_click(download)
+    install_download.on_click(install_downloader)
     
     # ====================
     
+    # 为了清除判断的输出加了一层，从是否已经移动设置按钮样式
     move_button = None
     if os.path.exists("/root/stable-diffusion-webui") == True:
         move_button = widgets.Button(
@@ -187,25 +189,19 @@ def getUi(data,cmd_run):
             icon='check'
         )
     
+    # 移动SDwebui
     def move_sd(self):
         if os.path.exists("/root/stable-diffusion-webui") == True:
-            move_button.description='正在移动...'
-            move_button.button_style='warning'
+            Utils.button_start(move_button,'正在移动...')
             out.clear_output()
             with out:
                 print("正在移动...请不要做任何其它操作!!!")
                 cmd_run("mv /root/stable-diffusion-webui /root/autodl-tmp/")
-                move_button.description='已移动到数据盘'
-                move_button.button_style='success'
-                move_button.icon='check'
-                print("移动完成")
+                Utils.button_yes_end(move_button,'已移动到数据盘')
         else:
             out.clear_output()
             with out:
-                move_button.description='已移动到数据盘'
-                move_button.button_style='success'
-                move_button.icon='check'
-                print("已在数据盘")
+                Utils.button_yes_end(move_button,'已移动到数据盘')
             
     move_button.on_click(move_sd)
     
@@ -235,6 +231,14 @@ def getUi(data,cmd_run):
         disabled=False,
     )
     
+    file_path_input = widgets.Text(
+        value='',
+        placeholder='请输入自定义下载路径(可选,填后上方选择无效,请勿添加/root/)[例如:stable-diffusion-webui/scripts]',
+        description='',
+        disabled=False,
+        layout=Layout(width='400px', height='auto')
+    )
+    
     download_buttom = widgets.Button(
         description='下载文件',
         button_style='success'
@@ -247,11 +251,14 @@ def getUi(data,cmd_run):
                 Utils.exp("请输入文件名!")
             if url.value=='':
                 Utils.exp("请输入文件地址!")
-            cmd_run(Utils.get_download_command(url.value,pos_list.value,file_name_input.value))
+            if file_path_input.value=="":
+                cmd_run(Utils.get_download_command(url.value,pos_list.value,file_name_input.value))
+            else:
+                cmd_run(Utils.get_download_command_custom(url.value,file_path_input.value,file_name_input.value))
     
     download_buttom.on_click(run_click)
     
-    my_url = VBox([url,file_name_input,pos_list,download_buttom])
+    my_url = VBox([url,file_name_input,pos_list,file_path_input,download_buttom])
     
     # ====================
     

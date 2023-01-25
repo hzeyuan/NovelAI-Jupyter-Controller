@@ -31,6 +31,7 @@ def get_is_speed():
 
 # ======================= 下载 =======================
 
+# 判断是否已安装下载器
 def get_have_aria2():
     return os.system(f'aria2c -v') == 0
 
@@ -38,6 +39,7 @@ embeddings_dir_1 = "/embeddings"
 hypernetworks_dir_2 = "/models/hypernetworks"
 ckpt_dir_3 = "/models/Stable-diffusion"
 
+# 获取SD目录
 def get_sd_dir():
     if os.path.exists("/root/stable-diffusion-webui"):
         return "/root/stable-diffusion-webui"
@@ -45,7 +47,8 @@ def get_sd_dir():
         return "/root/autodl-tmp/stable-diffusion-webui"
     else:
         return "-1"
-    
+
+# 获取不用类型文件在SD目录的相对位置
 def get_download_dir(style):
     sd_dir = get_sd_dir()
     mv_dir = "-1"
@@ -61,7 +64,8 @@ def get_download_dir(style):
         return mv_dir
     else:
         return "-1"
-        
+
+# 获取文件下载命令(路径根据类型)
 def get_download_command(url,style,file_name):
     download_dir = get_download_dir(style)
     if download_dir != "-1":
@@ -69,6 +73,11 @@ def get_download_command(url,style,file_name):
         return command
     else:
         return "echo 未找到目录!无法下载!"
+
+# 获取文件下载命令(路径自定义)
+def get_download_command_custom(url,file_path,file_name):
+    command = "cd /root/" + file_path + " && aria2c -s 16 -x 8 --seed-time=0 '" + url + "' -o " + file_name + " && echo 下载完毕!文件已保存到" + "/root/" + file_path
+    return command
 
 def generate_random_str(randomlength = 8):
     random_str = ''
