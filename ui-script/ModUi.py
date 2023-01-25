@@ -35,7 +35,7 @@ mod_list2 = [
     "urls":[
         {"url":'https://huggingface.co/nuigurumi/basil_mix/resolve/main/Basil_mix_fixed.safetensors',"pos":3,"name":"Basil_mix_fixed.safetensors"}
     ],
-    "hash":'0ff127093f',
+    "hash":'58841f67',
     "mod_class":0,
 },
 {
