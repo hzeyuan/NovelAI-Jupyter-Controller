@@ -219,6 +219,14 @@ def getUi(data,cmd_run):
         layout=Layout(width='400px', height='80px')
     )
     
+    file_name_input = widgets.Text(
+        value='',
+        placeholder='请输入下载后的文件名(必填)[例如:mod.ckpt]',
+        description='',
+        disabled=False,
+        layout=Layout(width='400px', height='auto')
+    )
+    
     pos_list = widgets.Dropdown(
         options=[('embeddings目录(PT)', 1), ('hypernetworks目录(PT)', 2), ('大模型目录(CKPT)', 3), ('数据盘(autodl-tmp)', 4)],
         value=4,
@@ -235,11 +243,15 @@ def getUi(data,cmd_run):
     def run_click(self):
         out.clear_output()
         with out:
-            cmd_run(Utils.get_download_command(url.value,pos_list.value))
+            if file_name_input.value=='':
+                Utils.exp("请输入文件名!")
+            if url.value=='':
+                Utils.exp("请输入文件地址!")
+            cmd_run(Utils.get_download_command(url.value,pos_list.value,file_name_input.value))
     
     download_buttom.on_click(run_click)
     
-    my_url = VBox([url,pos_list,download_buttom])
+    my_url = VBox([url,file_name_input,pos_list,download_buttom])
     
     # ====================
     

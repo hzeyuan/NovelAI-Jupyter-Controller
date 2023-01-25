@@ -109,6 +109,10 @@ def scan_dir_hash(style):
             hash_list.append(model_hash(file_dir))
     return hash_list
 
+# 抛出错误
+def exp(error):
+    raise ValueError(error)
+
 # 获取默认分支名字
 def get_main_b_name(path):
     output = subprocess.check_output(
