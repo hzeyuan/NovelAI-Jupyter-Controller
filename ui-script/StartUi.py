@@ -173,6 +173,22 @@ def getUi(data,cmd_run):
     
     warning_box = HBox([warning, warning_tip])
     
+    # -------
+    
+    no_half_vae = widgets.Checkbox(
+        value=True,
+        description='不启用半精VAE [--no-half-vae]',
+        disabled=False,
+        layout=Layout(width='auto', height='auto'),
+        indent=False
+    )
+    
+    no_half_vae_tip = widgets.HTML(
+        value="<font size='2' color='red'>勾选后解决生成图片时,可能的VAE精度不足所导致的报错</font>",
+    )
+    
+    no_half_vae_box = HBox([no_half_vae, no_half_vae_tip])
+    
     # ======================
     
     run_buttom = widgets.Button(
@@ -272,11 +288,19 @@ def getUi(data,cmd_run):
                 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
             else:
                 os.environ['TF_CPP_MIN_LOG_LEVEL']='0'
+                
+            if no_half_vae.value == True:
+                n_h_vae = "--no-half-vae "
+            else:
+                n_h_vae = ""
         
             python_local = sys.executable
-            command_content = r"cd " + sd_dir + " && " + python_local + " launch.py " + safe + " --port=6006 " + deepd + xf + speed + extension + pic_ext
+            
+            command_args = " launch.py " + safe + " --port=6006 " + deepd + xf + speed + extension + pic_ext + n_h_vae
+            command_content = r"cd " + sd_dir + " && " + python_local + command_args
+            
             if run_style_set.value == 1:
-                ThreadOut.run_thread_out(r"cd " + sd_dir + " && " + python_local + " -u launch.py " + safe + " --port=6006 " + deepd + xf + speed + extension + pic_ext,out)
+                ThreadOut.run_thread_out(r"cd " + sd_dir + " && " + python_local + " -u" + command_args,out)
             elif run_style_set.value == 2:
                 cmd_run(command_content)
             else:
@@ -305,7 +329,7 @@ def getUi(data,cmd_run):
         run_stylet_tip,run_style_set,
         white_line,line,
         info,
-        deepdanbooru,xformers_box,disable_box,insecure_extension_access_box,picture_extension_box,security_box,warning_box,
+        deepdanbooru,xformers_box,disable_box,insecure_extension_access_box,picture_extension_box,security_box,warning_box,no_half_vae_box,
         line,
         run_buttom,
         start_tip,start_tip_img,
