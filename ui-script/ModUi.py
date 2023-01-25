@@ -11,7 +11,7 @@ mod_list2 = [
         {"url":"magnet:?xt=urn:btih:2daef5b5f63a16a9af9169a529b1a773fc452637&dn=v1-5-pruned-emaonly.ckpt&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2f9.rarbg.com%3a2810%2fannounce&tr=udp%3a%2f%2ftracker.openbittorrent.com%3a6969%2fannounce&tr=udp%3a%2f%2fopentracker.i2p.rocks%3a6969%2fannounce&tr=https%3a%2f%2fopentracker.i2p.rocks%3a443%2fannounce&tr=http%3a%2f%2ftracker.openbittorrent.com%3a80%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce&tr=udp%3a%2f%2fopen.stealth.si%3a80%2fannounce&tr=udp%3a%2f%2fvibe.sleepyinternetfun.xyz%3a1738%2fannounce&tr=udp%3a%2f%2ftracker2.dler.org%3a80%2fannounce&tr=udp%3a%2f%2ftracker1.bt.moack.co.kr%3a80%2fannounce&tr=udp%3a%2f%2ftracker.zemoj.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.tiny-vps.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.theoks.net%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.publictracker.xyz%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.monitorit4.me%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.moeking.me%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.lelux.fi%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.dler.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.army%3a6969%2fannounce","pos":3,"name":"SD1.5"}
     ],
     "hash":'81761151',
-    "mod_class":0,
+    "mod_class":2,
 },
 {
     "name":"Anything v3.0 (极速)",
@@ -21,6 +21,23 @@ mod_list2 = [
     ],
     "hash":'1a7df6b8',
     "mod_class":0,
+},
+{
+    "name":"PVCGK [手办模型] (极速)",
+    "urls":[
+        {"url":'https://huggingface.co/swl-models/PVCGK/resolve/main/PVCGK-30-3e6-txt-arb-512-u1-cs2.ckpt',"pos":3,"name":"PVCGK.ckpt"}
+    ],
+    "hash":'1a7df6b8',
+    "mod_class":1,
+},
+{
+    "name":"Gf_style [国风模型] (极速)",
+    "urls":[
+        {"url":'https://huggingface.co/xiaolxl/Gf_style/resolve/main/Gf_style.safetensors',"pos":3,"name":"Gf_style.safetensors"},
+        {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/Anything-V3.0.vae.pt',"pos":3,"name":"Gf_style.vae.pt"}
+    ],
+    "hash":'127af4d5',
+    "mod_class":1,
 },
 {
     "name":"ACertainThing (极速)",
@@ -55,13 +72,13 @@ mod_list2 = [
     "mod_class":0,
 },
 {
-    "name":"Stable Diffusion v2.1 768-ema [记得更新webui到最新版本在安装！！！] (极速)",
+    "name":"Stable Diffusion v2.1 (768+ema) [记得更新webui再使用!] (极速)",
     "urls":[
         {"url":'https://huggingface.co/stabilityai/stable-diffusion-2-1/resolve/main/v2-1_768-ema-pruned.ckpt',"pos":3,"name":"v2-1_768-ema-pruned.ckpt"},
         {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/v2-1_768-ema-pruned.yaml',"pos":3,"name":"v2-1_768-ema-pruned.yaml"}
     ],
     "hash":'4bdfc29c',
-    "mod_class":0,
+    "mod_class":2,
 },
 {
     "name":"MakotoNiitsu-1.1-xhc [新海诚画风] 推荐：DDIM采样器生成 (极速)",
@@ -72,13 +89,13 @@ mod_list2 = [
     "mod_class":1,
 },
 {
-    "name":"Stable Diffusion v2.0 768-v-ema [记得更新webui到最新版本在安装！！！] (极速)",
+    "name":"Stable Diffusion v2.0 (768+ema) [记得更新webui再使用!] (极速)",
     "urls":[
         {"url":'https://huggingface.co/stabilityai/stable-diffusion-2/resolve/main/768-v-ema.ckpt',"pos":3,"name":"768-v-ema.ckpt"},
         {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/768-v-ema.yaml',"pos":3,"name":"768-v-ema.yaml"}
     ],
     "hash":'2c02b20a',
-    "mod_class":0,
+    "mod_class":2,
 },
 {
     "name":"moDi-v1-pruned [迪士尼画风] 关键词:[modern disney style] (极速)",
@@ -123,7 +140,8 @@ mod_list2 = [
 
 class_list = [
     {"title":"主流模型","mods":[]},
-    {"title":"推荐模型","mods":[]}
+    {"title":"推荐模型","mods":[]},
+    {"title":"经典模型","mods":[]}
 ]
 
 def getUi(data,cmd_run):
