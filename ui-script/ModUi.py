@@ -198,10 +198,12 @@ def getUi(data,cmd_run):
                 print("正在移动...请不要做任何其它操作!!!")
                 cmd_run("mv /root/stable-diffusion-webui /root/autodl-tmp/")
                 Utils.button_yes_end(move_button,'已移动到数据盘')
+                print("已成功移动")
         else:
             out.clear_output()
             with out:
                 Utils.button_yes_end(move_button,'已移动到数据盘')
+                print("已在数据盘")
             
     move_button.on_click(move_sd)
     

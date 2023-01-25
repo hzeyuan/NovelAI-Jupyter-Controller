@@ -13,6 +13,7 @@ chinese_name = {
 class Git_Item:
     def __init__(self,path,name,out):
         sd_dir = Utils.get_sd_dir()
+        self.path2 = path
         self.path = sd_dir + path
         self.out = out
         
@@ -47,6 +48,8 @@ class Git_Item:
                                   self.change_button],
                         layout=Layout(border='solid 1px',width='100%'))
     def click(self,temp):
+        self.update_dir()
+        
         self.change_button.description = "正在更新..."
         self.change_button.button_style = "warning"
         
@@ -62,6 +65,8 @@ class Git_Item:
         return self.Box
     
     def refresh(self,temp):
+        self.update_dir()
+        
         old_des = self.refresh_button.description
         self.refresh_button.description = "正在检查..."
         self.refresh_button.button_style = "warning"
@@ -84,6 +89,10 @@ class Git_Item:
             
             self.refresh_button.description = old_des
             self.refresh_button.button_style = "info"
+    
+    def update_dir(self): # 更新sd目录，防止移动
+        sd_dir = Utils.get_sd_dir()
+        self.path = sd_dir + self.path2
 
 def getUi(data,cmd_run):
     out = widgets.Output(layout={'border': '1px solid black'})
