@@ -119,7 +119,7 @@ def getUi(data,cmd_run):
     
     git_speed_buttom = widgets.Button(
             description='点击删除之前的非AutoDL官方加速，请点击删除有BUG',
-            layout=Layout(width='300px', height='auto'),
+            layout=Layout(width='350px', height='auto'),
             button_style='primary'
     )
     
