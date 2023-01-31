@@ -31,7 +31,15 @@ mod_list2 = [
     "mod_class":1,
 },
 {
-    "name":"Gf_style2 [国风模型] (极速)",
+    "name":"GuoFeng3 [国风模型2代] (极速)",
+    "urls":[
+        {"url":'https://huggingface.co/xiaolxl/GuoFeng3/resolve/main/GuoFeng3.ckpt',"pos":3,"name":"GuoFeng3.ckpt"}
+    ],
+    "hash":'',
+    "mod_class":1,
+},
+{
+    "name":"Gf_style2 [国风模型3代] (极速)",
     "urls":[
         {"url":'https://huggingface.co/xiaolxl/Gf_style2/resolve/main/Gf_style2.ckpt',"pos":3,"name":"Gf_style2.ckpt"},
         {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/Anything-V3.0.vae.pt',"pos":3,"name":"Gf_style2.vae.pt"}
