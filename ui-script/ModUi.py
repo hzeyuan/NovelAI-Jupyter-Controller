@@ -35,7 +35,7 @@ mod_list2 = [
     "urls":[
         {"url":'https://huggingface.co/xiaolxl/GuoFeng3/resolve/main/GuoFeng3.ckpt',"pos":3,"name":"GuoFeng3.ckpt"}
     ],
-    "hash":'',
+    "hash":'a6956468',
     "mod_class":1,
 },
 {
@@ -45,6 +45,14 @@ mod_list2 = [
         {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/Anything-V3.0.vae.pt',"pos":3,"name":"Gf_style2.vae.pt"}
     ],
     "hash":'127af4d5',
+    "mod_class":1,
+},
+{
+    "name":"Chinese-wedding [中式婚礼2代] (极速)",
+    "urls":[
+        {"url":'https://huggingface.co/zuzhe/Chinese-wedding/resolve/main/Chinese%20wedding%20v2.0%20AY.ckpt',"pos":3,"name":"Chinese_wedding.ckpt"}
+    ],
+    "hash":'1e0d49d4',
     "mod_class":1,
 },
 {
@@ -58,7 +66,8 @@ mod_list2 = [
 {
     "name":"basil_mix [2.5D人物模型] (极速)",
     "urls":[
-        {"url":'https://huggingface.co/nuigurumi/basil_mix/resolve/main/Basil_mix_fixed.safetensors',"pos":3,"name":"Basil_mix_fixed.safetensors"}
+        {"url":'https://huggingface.co/nuigurumi/basil_mix/resolve/main/Basil_mix_fixed.safetensors',"pos":3,"name":"Basil_mix_fixed.safetensors"},
+        {"url":'https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.ckpt',"pos":3,"name":"Basil_mix_fixed.vae.pt"}
     ],
     "hash":'58841f67',
     "mod_class":0,
