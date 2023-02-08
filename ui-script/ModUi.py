@@ -44,7 +44,7 @@ mod_list2 = [
         {"url":'https://huggingface.co/xiaolxl/Gf_style2/resolve/main/Gf_style2.ckpt',"pos":3,"name":"Gf_style2.ckpt"},
         {"url":'https://huggingface.co/xiaolxl/Stable-diffusion-models/resolve/main/Anything-V3.0.vae.pt',"pos":3,"name":"Gf_style2.vae.pt"}
     ],
-    "hash":'127af4d5',
+    "hash":'68774b6c',
     "mod_class":1,
 },
 {
