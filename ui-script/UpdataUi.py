@@ -20,9 +20,12 @@ class Git_Item:
         self.refresh_button = Button(description = name + '(点我刷新)',layout=Layout(width='auto', height='auto'),button_style='info')
         self.refresh_button.on_click(self.refresh)
         
+        self.now_time = Label(value="当前版本日期：请先刷新")
+        self.newest_time = Label(value="最新版本日期：请先刷新")
+        
         self.now_b_name = Label(value="当前版本分支：请先刷新")
         self.now_v_sha = Label(value="当前版本SHA：请先刷新")
-        self.left_box = VBox([self.now_b_name, self.now_v_sha])
+        self.left_box = VBox([self.now_b_name, self.now_v_sha,self.now_time])
 
         self.bb = widgets.Dropdown(
             options=[('请先刷新', '请先刷新')],
@@ -37,15 +40,22 @@ class Git_Item:
             layout=Layout(width='auto', height='auto'),
             disabled=False
         )
-        self.right_box = VBox([self.bb, self.sha])
+        self.right_box = VBox([self.bb, self.sha,self.newest_time])
         
         self.change_button = Button(description='设置插件版本',layout=Layout(width='150px', height='auto'),button_style='success')
         self.change_button.on_click(self.click)
         
+        
+        self.opengit_button = widgets.HTML(
+            value="<a target='_blank' style='vertical-align: middle;padding:0 3px;background-color:#d7d7d7;word-wrap:break-word;display: table-cell; text-align:center; width:100px; height:95px; border:2px solid black' href=''>请先刷新</a>",
+        )
+        
         self.Box = HBox(children=[self.refresh_button,
                                   self.left_box,
                                   self.right_box,
-                                  self.change_button],
+                                  self.change_button,
+                                  self.opengit_button
+                                 ],
                         layout=Layout(border='solid 1px',width='100%'))
     def click(self,temp):
         self.update_dir()
@@ -77,6 +87,7 @@ class Git_Item:
             b_main_name = Utils.get_main_b_name(self.path)
             self.now_b_name.value = "当前版本分支：" + b_now_name
             self.now_v_sha.value = "当前版本SHA：" + Utils.get_now_v_sha(self.path)
+            
             data = Utils.get_all_b_name(self.path)
             temp_arr = []
             for item in data:
@@ -86,6 +97,14 @@ class Git_Item:
                     temp_arr.append((item['branch_name'],item['branch_name']))
             self.bb.options = temp_arr
             self.bb.value = b_now_name
+            
+            now_time = Utils.get_now_v_time(self.path)
+            self.now_time.value = "当前版本日期：" + now_time
+            newest_time = Utils.get_newest_v_time(self.path)
+            self.newest_time.value = "最新版本日期："+ newest_time
+            
+            main_url = Utils.get_main_url(self.path)
+            self.opengit_button.value = "<a target='_blank' style='vertical-align: middle;padding:0 3px;background-color:#d7d7d7;word-wrap:break-word;display: table-cell; text-align:center; width:100px; height:95px; border:2px solid black' href='" + main_url + "'>点我访问对应github官网</a>"
             
             self.refresh_button.description = old_des
             self.refresh_button.button_style = "info"
@@ -249,7 +268,7 @@ def getUi(data,cmd_run):
                 
         # 显示button列表中的所有按钮
         box_.children = [updata_tip,updata_controller_buttom,webui_Item.get_box(),updata_scan,updata_line,VBox(button_list),out]
-        self.description = "扫描可更新程序与插件(记得开学术加速)[绿色代表已最新，黄色代表可更新]"
+        self.description = "扫描可更新程序与插件(记得开学术加速)[设置版本前一定要先刷新！]"
         self.button_style = "info"
         
     updata_scan.on_click(scan_run)

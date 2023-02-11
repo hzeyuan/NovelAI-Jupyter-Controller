@@ -4,6 +4,17 @@ import os
 
 import Utils
 
+common_extension_address = [
+{
+    "name":"Anything v3.0 (极速)",
+    "url":"Anything v3.0 (极速)",
+},
+{
+    "name":"Anything v3.0 (极速)",
+    "url":"Anything v3.0 (极速)",
+}
+]
+
 def getUi(data,cmd_run):
     out = widgets.Output(layout={'border': '1px solid black'})
     
@@ -19,9 +30,9 @@ def getUi(data,cmd_run):
     
     #===========
     
-    extensions_tip = widgets.HTML(
-        value="<h1>扩展安装工具</h1>",
-    )
+    # extensions_tip = widgets.HTML(
+    #     value="<h1>扩展安装工具</h1>",
+    # )
     
     extensions_input = widgets.Text(
         value='',
@@ -48,11 +59,13 @@ def getUi(data,cmd_run):
     
     extensions_buttom.on_click(extensions_buttom_click)
     
+    extensions_box = VBox([extensions_input,extensions_buttom])
+    
     #===========
     
-    del_tool_tip = widgets.HTML(
-        value="<h1>文件删除工具</h1>",
-    )
+    # del_tool_tip = widgets.HTML(
+    #     value="<h1>文件删除工具</h1>",
+    # )
     
     file = open("/root/NovelAI-Jupyter-Controller/ui-script/删除.png", "rb")
     image = file.read()
@@ -79,7 +92,7 @@ def getUi(data,cmd_run):
             button_style='success'
     )
     
-    clear_buttom = widgets.Button(
+    clear_dir_buttom = widgets.Button(
             description='点击清空路径',
             style={'description_width': 'initial'},
             layout=Layout(width='150px', height='auto'),
@@ -91,24 +104,23 @@ def getUi(data,cmd_run):
         with out:
             cmd_run("echo 请稍等，正在删除! && rm -rf /root/" + del_input.value + " && echo 删除完成!")
     
-    def clear_buttom_click(self):
+    def clear_dir_buttom_click(self):
         del_input.value = ""
     
     del_buttom.on_click(del_buttom_click)
-    clear_buttom.on_click(clear_buttom_click)
+    clear_dir_buttom.on_click(clear_dir_buttom_click)
     
     del_tool_box = VBox([
-        del_tool_tip,
         del_img,
         del_input,
-        HBox([del_buttom,clear_buttom])
+        HBox([del_buttom,clear_dir_buttom])
     ])
     
     #===========
     
-    other_tool_tip = widgets.HTML(
-        value="<h1>其它工具</h1>",
-    )
+    # other_tool_tip = widgets.HTML(
+    #     value="<h1>其它工具</h1>",
+    # )
     
     clear_buttom = widgets.Button(
             description='清理系统盘',
@@ -154,15 +166,30 @@ def getUi(data,cmd_run):
     git_speed_buttom.on_click(git_speed_buttom_click)
     del_xformers_buttom.on_click(del_xformers_buttom_click)
     
+    other_tool_box = VBox([
+        clear_buttom,
+        git_speed_buttom,
+        del_xformers_buttom
+    ])
+    
     #===========
     
-    return VBox([
-        tool_tip,
-        line,
-        extensions_tip,extensions_input,extensions_buttom,
-        line,
-        del_tool_box,
-        line,
-        other_tool_tip,clear_buttom,git_speed_buttom,del_xformers_buttom,
-        out
-    ])
+    accordion = widgets.Accordion(children=[tool_tip, extensions_box, del_tool_box, other_tool_box])
+    accordion.set_title(0, '帮助文档')
+    accordion.set_title(1, '扩展安装工具')
+    accordion.set_title(2, '文件删除工具')
+    accordion.set_title(3, '其它工具')
+    accordion.selected_index = None
+    
+    # return VBox([
+    #     tool_tip,
+    #     line,
+    #     extensions_tip,extensions_input,extensions_buttom,
+    #     line,
+    #     del_tool_box,
+    #     line,
+    #     other_tool_tip,clear_buttom,git_speed_buttom,del_xformers_buttom,
+    #     out
+    # ])
+
+    return VBox([accordion,out])

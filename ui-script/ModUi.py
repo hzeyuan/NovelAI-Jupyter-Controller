@@ -31,11 +31,27 @@ mod_list2 = [
     "mod_class":1,
 },
 {
-    "name":"GuoFeng3 [国风模型3代] (极速)",
+    "name":"Counterfeit-V2.5 (极速)",
     "urls":[
-        {"url":'https://huggingface.co/xiaolxl/GuoFeng3/resolve/main/GuoFeng3.ckpt',"pos":3,"name":"GuoFeng3.ckpt"}
+        {"url":'https://huggingface.co/gsdf/Counterfeit-V2.5/resolve/main/Counterfeit-V2.5.safetensors',"pos":3,"name":"Counterfeit-V2.5.safetensors"}
     ],
-    "hash":'a6956468',
+    "hash":'9b36871e',
+    "mod_class":1,
+},
+{
+    "name":"EimisAnimeDiffusion_1-0v (极速)",
+    "urls":[
+        {"url":'https://huggingface.co/eimiss/EimisAnimeDiffusion_1.0v/resolve/main/EimisAnimeDiffusion_1-0v.ckpt',"pos":3,"name":"EimisAnimeDiffusion_1-0v.ckpt"}
+    ],
+    "hash":'4f828a15',
+    "mod_class":1,
+},
+{
+    "name":"GuoFeng3.1 [国风模型3.1代] (极速)",
+    "urls":[
+        {"url":'https://huggingface.co/xiaolxl/GuoFeng3/resolve/main/GuoFeng3_Fix.ckpt',"pos":3,"name":"GuoFeng3_Fix.ckpt"}
+    ],
+    "hash":'05601da0',
     "mod_class":1,
 },
 {

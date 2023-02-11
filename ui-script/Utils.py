@@ -158,6 +158,16 @@ def get_main_b_name(path):
     # Get the branch name from the output
     return  output.split('/')[-1].split('\t')[0]
 
+# 远程仓库地址
+def get_main_url(path):
+    output = subprocess.check_output(
+        ['git', 'ls-remote', '--get-url', 'origin'],
+        cwd=path
+    ).strip().decode('utf-8')
+
+    # Get the branch name from the output
+    return output
+
 # 获取全部分支名字
 def get_all_b_name(path):
     data = []
@@ -187,7 +197,7 @@ def get_nov_b_name(path):
         cwd=path
     ).strip().decode('utf-8').split('/')[1]
 
-# 获取当前分支SHA
+# 获取当前分支当前版本SHA
 def get_now_v_sha(path):
     output = subprocess.check_output(
         ['git', 'rev-parse', 'HEAD'],
@@ -201,6 +211,51 @@ def get_now_v_sha(path):
     full_sha = output.split('/')[0]
     
     return full_sha
+
+# 获取当前分支最新版本SHA
+def get_newest_v_sha(path):
+    output = subprocess.check_output(
+        ['git', 'rev-parse', 'origin'],
+        cwd=path
+    ).strip()
+
+    # Convert the output to a string
+    output = output.decode('utf-8')
+
+    # Remove the extra content
+    full_sha = output.split('/')[0]
+    
+    return full_sha
+
+# 获取当前版本时间
+def get_now_v_time(path):
+    now_sha = get_now_v_sha(path)
+
+    date = subprocess.check_output(
+        ['git', 'show', '-s', '--format=%ci', now_sha],
+        cwd=path
+    ).decode('utf-8').strip()
+    
+    dates = date.split(" ")
+    
+    out_data = dates[0] + " " + dates[1]
+    
+    return out_data
+
+# 获取最新版本时间
+def get_newest_v_time(path):
+    newest_sha = get_newest_v_sha(path)
+
+    date = subprocess.check_output(
+        ['git', 'show', '-s', '--format=%ci', newest_sha],
+        cwd=path
+    ).decode('utf-8').strip()
+    
+    dates = date.split(" ")
+    
+    out_data = dates[0] + " " + dates[1]
+    
+    return out_data
 
 # 切换分支与版本
 def change_b_and_v(path,branch_name,full_sha):
