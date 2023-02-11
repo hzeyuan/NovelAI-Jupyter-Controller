@@ -8,7 +8,7 @@ def getUi(data,cmd_run):
     out = widgets.Output(layout={'border': '1px solid black'})
     
     version_tip = widgets.HTML(
-        value="<h3><font color='#A52A2A'>启动器版本：2.1.3</font></h3>",
+        value="<h3><font color='#A52A2A'>启动器版本：2.2.3</font></h3>",
     )
     
     line = widgets.HTML(
