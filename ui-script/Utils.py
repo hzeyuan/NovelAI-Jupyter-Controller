@@ -214,6 +214,11 @@ def get_now_v_sha(path):
 
 # 获取当前分支最新版本SHA
 def get_newest_v_sha(path):
+    subprocess.run(
+        ['git', 'fetch', '--all'],
+        cwd=path
+    )
+    
     output = subprocess.check_output(
         ['git', 'rev-parse', 'origin'],
         cwd=path
