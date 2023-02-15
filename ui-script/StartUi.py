@@ -189,6 +189,22 @@ def getUi(data,cmd_run):
     
     no_half_vae_box = HBox([no_half_vae, no_half_vae_tip])
     
+    # -------
+    
+    nan_check = widgets.Checkbox(
+        value=True,
+        description='忽略NaNs检查 [--disable-nan-check]',
+        disabled=False,
+        layout=Layout(width='auto', height='auto'),
+        indent=False
+    )
+    
+    nan_check_tip = widgets.HTML(
+        value="<font size='2' color='red'>勾选后解决生成图片时,出现NaNs导致的报错(错误图片以黑图出现而不会直接中断)</font>",
+    )
+    
+    nan_check_box = HBox([nan_check, nan_check_tip])
+    
     # ======================
     
     run_buttom = widgets.Button(
@@ -293,10 +309,15 @@ def getUi(data,cmd_run):
                 n_h_vae = "--no-half-vae "
             else:
                 n_h_vae = ""
+                
+            if nan_check.value == True:
+                n_c = "--disable-nan-check "
+            else:
+                n_c = ""
         
             python_local = sys.executable
             
-            command_args = " launch.py " + safe + " --port=6006 " + deepd + xf + speed + extension + pic_ext + n_h_vae
+            command_args = " launch.py " + safe + " --port=6006 " + deepd + xf + speed + extension + pic_ext + n_h_vae + n_c
             command_content = r"cd " + sd_dir + " && " + python_local + command_args
             
             if run_style_set.value == 1:
@@ -329,7 +350,7 @@ def getUi(data,cmd_run):
         run_stylet_tip,run_style_set,
         white_line,line,
         info,
-        deepdanbooru,xformers_box,disable_box,insecure_extension_access_box,picture_extension_box,security_box,warning_box,no_half_vae_box,
+        deepdanbooru,xformers_box,disable_box,insecure_extension_access_box,picture_extension_box,security_box,warning_box,no_half_vae_box,nan_check_box,
         line,
         run_buttom,
         start_tip,start_tip_img,
