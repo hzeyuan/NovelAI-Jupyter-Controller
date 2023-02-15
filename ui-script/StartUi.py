@@ -192,7 +192,7 @@ def getUi(data,cmd_run):
     # -------
     
     nan_check = widgets.Checkbox(
-        value=True,
+        value=False,
         description='忽略NaNs检查 [--disable-nan-check]',
         disabled=False,
         layout=Layout(width='auto', height='auto'),
